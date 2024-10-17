@@ -10,56 +10,127 @@ body {
 
 /* Navigation Bar */
 nav {
-    background-color: #2c3e50;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
     padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(10px); /* Optional: adds a blurred effect behind the navbar */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
+/* Navbar Links */
 nav ul {
     list-style: none;
     display: flex;
-    justify-content: center;
-    padding: 0;
+    justify-content: center; /* Center align links */
     margin: 0;
+    padding: 0;
 }
 
 nav ul li {
-    margin: 0 15px;
+    display: inline;
 }
 
 nav ul li a {
     color: white;
     text-decoration: none;
-    font-size: 1.1rem;
-    font-weight: bold;
+    font-size: 1.2rem;
+    padding: 10px 15px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    border-radius: 5px;
 }
 
+/* Hover effect for navbar links */
 nav ul li a:hover {
-    color: #18bc9c;
+    background-color: rgba(255, 152, 0, 0.5); /* Semi-transparent highlight color */
+    color: #fff;
+}
+
+/* Active link styling */
+nav ul li a.active {
+    background-color: rgba(244, 67, 54, 0.7); /* Semi-transparent red for active link */
+    color: white;
+}
+
+/* Make each section translucent */
+section {
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    padding: 2rem;
+    margin: 1rem 0; /* Reduced margins */
+    border-radius: 10px; /* Optional: rounded corners for a softer look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
+}
+
+/* Center align text in all sections */
+section h3, section p {
+    text-align: center; /* Centered text */
+}
+
+/* Responsive navbar for smaller screens */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    nav ul li {
+        margin-bottom: 10px;
+    }
 }
 
 /* Title Section */
 #title {
+    height: 75vh;
     text-align: center;
     padding: 4rem 2rem;
-    background-color: #2980b9;
+    background-image: url('images/banner.png'); /* Path to your image */
+    background-size: cover;
+    background-position: center;
     color: white;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
 }
 
+/* Heading and paragraph styles inside the title */
 #title h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+    font-size: 4rem;
+    margin-top: 0; /* Adjusted margin */
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 #title p {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Add an overlay for better text visibility */
+#title::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+    z-index: 0;
+}
+
+/* Ensure text appears over the overlay */
+#title h1, #title p {
+    position: relative;
+    z-index: 1;
 }
 
 /* Introduction Section */
 #introduction {
     background-color: #ecf0f1;
     padding: 3rem 2rem;
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -72,7 +143,7 @@ nav ul li a:hover {
 #introduction p {
     margin-bottom: 1rem;
     font-size: 1.1rem;
-    text-align: justify;
+    text-align: center; /* Center align text */
 }
 
 /* Practical Questions Section */
@@ -91,79 +162,66 @@ nav ul li a:hover {
 
 #practical-questions ul {
     list-style-type: disc;
-    margin-left: 2rem;
-}
-
-#practical-questions ul li {
-    font-size: 1.1rem;
-    margin-bottom: 0.75rem;
+    padding-left: 20px;
 }
 
 /* Team Section */
 #team {
     background-color: #ecf0f1;
     padding: 3rem 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 #team h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
     color: #2c3e50;
 }
 
 .flex {
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 2rem;
+    flex-wrap: wrap; /* Allow items to wrap to next line */
+    justify-content: center; /* Center align flex items */
 }
 
 .col {
-    flex: 1;
-    max-width: 250px;
-    text-align: center;
+    flex: 1 1 30%; /* Flex-basis 30% with grow and shrink */
+    margin: 10px; /* Space between columns */
+    max-width: 300px; /* Limit max width */
 }
 
-.image.round img {
-    border-radius: 50%;
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
+.image {
+    border-radius: 50%; /* Circular images */
+    overflow: hidden; /* Ensure images fit within the circle */
 }
 
-.col p {
-    margin: 1rem 0;
-    font-size: 1.1rem;
+.image img {
+    width: 100%; /* Responsive image */
+    height: auto;
 }
 
+/* Button styles */
 .button {
-    background-color: #18bc9c;
-    color: white;
-    padding: 0.7rem 1.5rem;
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    color: #fff;
+    background-color: #e67e22; /* Button color */
+    border: none;
     border-radius: 5px;
     text-decoration: none;
-    font-weight: bold;
-    display: inline-block;
+    transition: background-color 0.3s ease;
 }
 
 .button:hover {
-    background-color: #2c3e50;
+    background-color: #d35400; /* Darker button color on hover */
 }
 
-/* Responsive Design */
+/* Ensure proper styling across devices */
 @media (max-width: 768px) {
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .flex {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    #introduction, #practical-questions {
-        padding: 2rem;
+    #team .flex {
+        flex-direction: column; /* Stack columns on small screens */
+        align-items: center; /* Center align stacked items */
     }
 }
