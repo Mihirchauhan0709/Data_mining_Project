@@ -127,49 +127,84 @@ section h3, section p {
 }
 
 /* Introduction Section */
-#introduction {
-    background-color: #ecf0f1;
-    padding: 3rem 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
+.introduction {
+    display: grid; /* Enable grid layout */
+    grid-template-columns: 1fr; /* One column */
+    gap: 20px; /* Space between grid items (paragraphs) */
+    margin: 20px auto; /* Center the section */
+    background: white; /* White background for contrast */
+    border-radius: 5px; /* Slight rounding of corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
 }
 
-#introduction h3 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    color: #2c3e50;
+.introduction h3 {
+    text-align: center; /* Center the header */
 }
 
-#introduction p {
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
-    text-align: center; /* Center align text */
+.intro-paragraph {
+    background-color: #f9f9f9; /* Background for each paragraph */
+    padding: 20px; /* Padding for each paragraph */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
 }
+
+.intro-paragraph p {
+    text-align: justify; /* Justify text for better readability */
+    line-height: 1.6; /* Increase line height for readability */
+}
+
 
 /* Practical Questions Section */
 #practical-questions {
-    background-color: #f5f5f5;
-    padding: 3rem 2rem;
-    max-width: 1000px;
-    margin: 0 auto;
+    margin: 0 auto; /* Remove top and bottom margin, keep horizontal centering */
+    padding: 20px 0; /* Optional: Add some padding for spacing within the section */
+    text-align: center; /* Centers the heading */
 }
 
 #practical-questions h3 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    color: #2c3e50;
+    font-size: 2em;
+    margin-bottom: 30px; /* Adjust this if you want space below the heading */
+    text-align: center; /* Ensure the heading is centered */
 }
 
 #practical-questions ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2-column grid */
+    gap: 20px; /* Space between grid items */
+    padding: 0; /* Remove padding from the list */
+    list-style-type: none; /* Remove bullets from list */
+    margin: 0 auto; /* Center the grid within the section */
+}
+
+#practical-questions ul li {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Adds shadow around the box */
+    font-size: 1.1em;
+    line-height: 1.5;
+    text-align: center; /* Center the text inside the box */
+}
+
+/* Media query for responsiveness on smaller screens */
+@media (max-width: 768px) {
+    #practical-questions ul {
+        grid-template-columns: 1fr; /* Switch to 1-column layout */
+    }
+}
+
+
+
+/* }
+#practical-questions ul {
     list-style-type: disc;
     padding-left: 20px;
-}
+} */
 
 /* Team Section */
 #team {
     background-color: #ecf0f1;
     padding: 3rem 2rem;
-    max-width: 1000px;
     margin: 0 auto;
 }
 
@@ -177,6 +212,14 @@ section h3, section p {
     font-size: 2rem;
     margin-bottom: 1.5rem;
     color: #2c3e50;
+}
+#team h2 {
+    text-align: center; /* Center align the header */
+    margin-bottom: 2rem; /* Add space below the header */
+}
+
+#team .col {
+    margin: 70px; /* Increase space between columns */
 }
 
 .flex {
@@ -200,6 +243,34 @@ section h3, section p {
     width: 100%; /* Responsive image */
     height: auto;
 }
+/* Team Button Centered Styling */
+.button-team {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    color: #fff;
+    background-color: #e67e22; /* Button color */
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    width: 100%; /* Full width of the column */
+    box-sizing: border-box; /* Ensure padding doesn’t affect width */
+}
+
+/* Center the button container */
+.col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Hover effect */
+.button-team:hover {
+    background-color: #d35400; /* Darker button color on hover */
+}
+
 
 /* Button styles */
 .button {
