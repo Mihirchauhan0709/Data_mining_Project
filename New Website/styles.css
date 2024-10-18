@@ -1,11 +1,28 @@
-/* Global styles */
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
     color: #333;
     line-height: 1.6;
+    background-image: url('images/banner.png');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #000000;
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+#main {
+    background-color: rgba(0, 0, 0, 0.5); /* Transparent black for the background */
+    margin-top: 0; /* No space between navbar and main content */
+    margin-bottom: 0;
+    padding: 0;
 }
 
 /* Navigation Bar */
@@ -15,6 +32,7 @@ nav {
     position: sticky;
     top: 0;
     z-index: 10;
+    margin: 0; /* Ensure no extra margins */
     backdrop-filter: blur(10px); /* Optional: adds a blurred effect behind the navbar */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
@@ -23,7 +41,7 @@ nav {
 nav ul {
     list-style: none;
     display: flex;
-    justify-content: center; /* Center align links */
+    justify-content: center;
     margin: 0;
     padding: 0;
 }
@@ -41,16 +59,27 @@ nav ul li a {
     border-radius: 5px;
 }
 
+/* Remove space between nav and main */
+nav {
+    margin-bottom: 0; /* No space below the navbar */
+}
+
+#main {
+    margin-top: 0; /* No space between the navbar and main content */
+    padding-top: 0; /* Ensure no padding */
+}
+
+
 /* Hover effect for navbar links */
 nav ul li a:hover {
-    background-color: rgba(255, 152, 0, 0.5); /* Semi-transparent highlight color */
-    color: #fff;
+    background-color: #B7E0FF; /* Semi-transparent highlight color */
+    color: #000000;
 }
 
 /* Active link styling */
 nav ul li a.active {
-    background-color: rgba(244, 67, 54, 0.7); /* Semi-transparent red for active link */
-    color: white;
+    background-color: #6ab9f6; /* Semi-transparent red for active link */
+    color: rgb(0, 0, 0);
 }
 
 /* Make each section translucent */
@@ -58,8 +87,8 @@ section {
     background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
     padding: 2rem;
     margin: 1rem 0; /* Reduced margins */
-    border-radius: 10px; /* Optional: rounded corners for a softer look */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
+    /* border-radius: 10px;  */
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  */
 }
 
 /* Center align text in all sections */
@@ -75,7 +104,7 @@ section h3, section p {
     }
     
     nav ul li {
-        margin-bottom: 10px;
+        /* margin-bottom: 10px; */
     }
 }
 
@@ -84,7 +113,7 @@ section h3, section p {
     height: 75vh;
     text-align: center;
     padding: 4rem 2rem;
-    background-image: url('images/banner.png'); /* Path to your image */
+    /* background-image: url('images/banner.png');  */
     background-size: cover;
     background-position: center;
     color: white;
@@ -92,19 +121,21 @@ section h3, section p {
     display: flex;
     flex-direction: column;
     justify-content: center; /* Center content vertically */
+    background: rgb(0, 0, 0,0.5)
 }
 
 /* Heading and paragraph styles inside the title */
 #title h1 {
     font-size: 4rem;
     margin-top: 0; /* Adjusted margin */
-    margin-bottom: 2rem;
+    /* margin-bottom: 2rem; */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    
 }
 
 #title p {
     font-size: 1.5rem;
-    margin-bottom: 2rem;
+    /* margin-bottom: 2rem; */
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
@@ -116,7 +147,7 @@ section h3, section p {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+    background-color: none; /* Semi-transparent overlay */
     z-index: 0;
 }
 
@@ -131,40 +162,44 @@ section h3, section p {
     display: grid; /* Enable grid layout */
     grid-template-columns: 1fr; /* One column */
     gap: 20px; /* Space between grid items (paragraphs) */
-    margin: 20px auto; /* Center the section */
-    background: white; /* White background for contrast */
-    border-radius: 5px; /* Slight rounding of corners */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
+    /* margin: 20px auto;  */
+    background: rgb(0, 0, 0,0.5)
+
 }
 
 .introduction h3 {
     text-align: center; /* Center the header */
+    color: white;
+    font-size: 2rem;
 }
 
 .intro-paragraph {
-    background-color: #f9f9f9; /* Background for each paragraph */
+    background-color: rgba(0, 0, 0, 0.5);
     padding: 20px; /* Padding for each paragraph */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
+    /* border-radius: 10px;  */
+    /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);  */
 }
 
 .intro-paragraph p {
     text-align: justify; /* Justify text for better readability */
     line-height: 1.6; /* Increase line height for readability */
+    color: white;
 }
 
 
 /* Practical Questions Section */
 #practical-questions {
-    margin: 0 auto; /* Remove top and bottom margin, keep horizontal centering */
+    /* margin: 0 auto;  */
     padding: 20px 0; /* Optional: Add some padding for spacing within the section */
     text-align: center; /* Centers the heading */
+    background: rgb(0, 0, 0,0.5)
 }
 
 #practical-questions h3 {
     font-size: 2em;
-    margin-bottom: 30px; /* Adjust this if you want space below the heading */
+    /* margin-bottom: 30px;  */
     text-align: center; /* Ensure the heading is centered */
+    color: white;
 }
 
 #practical-questions ul {
@@ -174,6 +209,7 @@ section h3, section p {
     padding: 0; /* Remove padding from the list */
     list-style-type: none; /* Remove bullets from list */
     margin: 0 auto; /* Center the grid within the section */
+    
 }
 
 #practical-questions ul li {
@@ -184,6 +220,8 @@ section h3, section p {
     font-size: 1.1em;
     line-height: 1.5;
     text-align: center; /* Center the text inside the box */
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
 }
 
 /* Media query for responsiveness on smaller screens */
@@ -203,19 +241,23 @@ section h3, section p {
 
 /* Team Section */
 #team {
-    background-color: #ecf0f1;
+    background-color: transparent;
     padding: 3rem 2rem;
     margin: 0 auto;
+    background: rgb(0, 0, 0,0.5)
 }
 
 #team h2 {
     font-size: 2rem;
     margin-bottom: 1.5rem;
-    color: #2c3e50;
+    text-align: center;
+    color: #ffffff;
+    
 }
-#team h2 {
+#team p {
     text-align: center; /* Center align the header */
-    margin-bottom: 2rem; /* Add space below the header */
+    /* margin-bottom: 2rem; */
+    color: #f9f9f9;
 }
 
 #team .col {
@@ -249,7 +291,7 @@ section h3, section p {
     margin-top: 10px;
     padding: 10px 15px;
     color: #fff;
-    background-color: #e67e22; /* Button color */
+    background-color: #64b7f7; /* Button color */
     border: none;
     border-radius: 5px;
     text-decoration: none;
@@ -268,7 +310,8 @@ section h3, section p {
 
 /* Hover effect */
 .button-team:hover {
-    background-color: #d35400; /* Darker button color on hover */
+    background-color: #B7E0FF; 
+    color: black;/* Darker button color on hover */
 }
 
 
@@ -278,7 +321,7 @@ section h3, section p {
     margin-top: 10px;
     padding: 10px 15px;
     color: #fff;
-    background-color: #e67e22; /* Button color */
+    background-color: #B7E0FF; /* Button color */
     border: none;
     border-radius: 5px;
     text-decoration: none;
@@ -286,7 +329,7 @@ section h3, section p {
 }
 
 .button:hover {
-    background-color: #d35400; /* Darker button color on hover */
+    background-color: #B7E0FF /* Darker button color on hover */
 }
 
 /* Ensure proper styling across devices */
@@ -295,4 +338,148 @@ section h3, section p {
         flex-direction: column; /* Stack columns on small screens */
         align-items: center; /* Center align stacked items */
     }
+}
+
+footer {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    text-align: center;
+    padding: 20px 0; /* Padding to create space inside the footer */
+
+}
+
+.footer-content {
+    max-width: 1200px; /* Restricts the footer content width */
+    margin: 0 auto; /* Centers the content horizontally */
+}
+
+.footer-content p {
+    margin: 10px 0; /* Adds space between paragraphs */
+}
+
+.social-media {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0; /* Adds space between the social links and other content */
+}
+
+.social-media li {
+    display: inline-block;
+    margin-right: 15px; /* Spacing between each social media icon */
+}
+
+.social-media a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem; /* Adjust font size */
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.social-media a:hover {
+    color: #B7E0FF; /* Change color on hover for a more interactive feel */
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #B7E0FF /* Hover effect for the contact email */
+}
+
+
+
+/* New page */
+
+/* Header Styles */
+header#title {
+
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+header#title h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+header#title p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Data Section Styles */
+section.data-section {
+    max-width: 1400px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-left: 6px solid #4caf50; /* Green highlight */
+}
+
+section.data-section h3 {
+    font-size: 2rem;
+    color: #4caf50;
+    margin-bottom: 15px;
+}
+
+section.data-section p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Specific Styling for Different Sections */
+section.data-collection {
+    border-left-color: #2196f3; /* Blue highlight for Data Collection */
+}
+
+.data-images {
+    display: flex;
+    flex-direction: column; /* Stack images vertically */
+    align-items: center; /* Center align images */
+    margin-top: 20px;
+}
+
+.data-images img {
+    max-width: 80%; /* Make images larger */
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px 0; /* Add vertical margin between images */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .data-images img {
+        max-width: 100%; /* Images will take full width on smaller screens */
+        margin: 10px 0; /* Margin adjustment for vertical spacing */
+    }
+}
+
+
+figure {
+    text-align: center; /* Center align the figure and caption */
+    margin: 20px 0; /* Margin for spacing */
+}
+
+figcaption {
+    margin-top: 8px; /* Space between the image and caption */
+    font-size: 1em; /* Font size for the caption */
+    color: #555; /* Optional: caption color */
+}
+
+
+section.data-cleaning {
+    border-left-color: #ff9800; /* Orange highlight for Data Cleaning */
+}
+
+section.data-visualizations {
+    border-left-color: #9c27b0; /* Purple highlight for Data Visualizations */
 }
