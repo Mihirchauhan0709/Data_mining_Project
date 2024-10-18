@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoalTrack - Data Collection</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to the same CSS file -->
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="data-collection.html" class="active">Data Collection</a></li>
+            <li><a href="models.html">Models Implemented</a></li>
+            <li><a href="conclusion.html">Conclusion</a></li>
+            <li><a href="references.html">References</a></li>
+        </ul>
+    </nav>
+
+    <header id="title">
+        <h1>Data Collection</h1>
+        <p>This page provides insights into the processes and methodologies used for collecting data in our project.</p>
+    </header>
+
+    <section class="data-section data-collection">
+        <h3>Data Collection</h3>
+        <p>The data for this project was collected by scraping <a href="https://fbref.com/en/" target="_blank">FBref.com</a>, a reliable source for detailed football statistics. I utilized web scraping techniques to extract data on player performance, match statistics, and league standings. This information was then cleaned and prepared for further analysis.</p>
+    
+        <p>Specifically, I navigated to the player statistics section to gather key metrics such as goals, assists, passes, and defensive actions. Screenshots of the scraping process are provided below:</p>
+    
+        <!-- Data Source Link -->
+        <p>Data collected from: 
+            <a href="https://fbref.com/en/" target="_blank">FBref.com</a>
+        </p>
+    
+        <!-- Images of Data Collection Process -->
+        <div class="data-images">
+            <figure>
+                <img src="images/website_data.png" alt="Image showing data scraping process 1">
+                <figcaption>Website Data</figcaption>
+            </figure>
+            <figure>
+                <img src="images/code_data.png" alt="Image showing data scraping process 3">
+                <figcaption>Extracting player statistics and match data.</figcaption>
+            </figure>
+            <figure>
+                <img src="images/scrapped_data.png" alt="Image showing data scraping process 2">
+                <figcaption>Scrapper Data</figcaption>
+            </figure>
+
+        </div>
+    </section>
+    
+
+    <section class="data-section data-cleaning">
+        <h3>Data Cleaning</h3>
+        <p>Data cleaning is a critical step in the data collection process, ensuring that our dataset is accurate, consistent, and usable for analysis. Below are the key steps we followed:</p>
+    
+        <h4>1. Removing Duplicates</h4>
+        <p>Initially, we checked for duplicate entries in our dataset, as duplicates can skew analysis results. We used Python’s Pandas library to identify and remove any duplicate records.</p>
+    
+        <h4>2. Handling Missing Values</h4>
+        <p>Missing values can lead to inaccurate conclusions. We employed several strategies to address this issue:</p>
+        <ul>
+            <li><strong>Imputation:</strong> For numerical data, we replaced missing values with the mean or median of the column.</li>
+            <li><strong>Removal:</strong> In cases where a significant portion of data was missing, we opted to remove those rows entirely to maintain data integrity.</li>
+        </ul>
+    
+        <h4>3. Data Type Conversion</h4>
+        <p>We ensured that each column had the correct data type for accurate analysis. For example, date columns were converted to datetime objects, and categorical variables were encoded as necessary.</p>
+    
+        <h4>4. Normalization and Scaling</h4>
+        <p>To prepare the data for modeling, we normalized and scaled the numerical features. This step is crucial for algorithms that rely on distance metrics. We used Min-Max scaling to transform our data into a uniform range.</p>
+    
+        <h4>5. Outlier Detection</h4>
+        <p>Outliers can significantly affect our analysis. We employed the Z-score method to detect and assess outliers. Depending on their impact, we either transformed or removed them from our dataset.</p>
+    
+        <h4>6. Final Review</h4>
+        <p>After applying the above techniques, we conducted a final review of the dataset to ensure its quality. We generated summary statistics and visualizations to confirm that the data was now clean and ready for analysis.</p>
+    </section>
+    
+
+    <section class="data-section data-visualizations">
+        <h3>Data Visualizations</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur consequat felis sed ante pharetra, ac vehicula metus laoreet. In posuere erat at metus cursus facilisis.</p>
+    </section>
+    
+</body>
+
+
+</html>
