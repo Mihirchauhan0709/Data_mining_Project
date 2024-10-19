@@ -12,7 +12,7 @@ body {
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
-    background-color: #000000;
+
     font-family: "Ubuntu", sans-serif;
     font-weight: 500;
     font-style: normal;
@@ -110,118 +110,118 @@ section h3, section p {
 
 /* Title Section */
 #title {
-    height: 75vh;
-    text-align: center;
-    padding: 4rem 2rem;
-    /* background-image: url('images/banner.png');  */
-    background-size: cover;
-    background-position: center;
-    color: white;
-    position: relative;
-    display: flex;
-    flex-direction: column;
+    height: 75vh; /* Full height of the viewport */
+    text-align: center; /* Center text */
+    padding: 4rem 2rem; /* Padding for spacing */
+    background-color:none;
+    color: white; /* Text color */
+    position: relative; /* For positioning child elements */
+    display: flex; /* Enable flexbox layout */
+    flex-direction: column; /* Stack items vertically */
     justify-content: center; /* Center content vertically */
-    background: rgb(0, 0, 0,0.5)
 }
 
 /* Heading and paragraph styles inside the title */
 #title h1 {
-    font-size: 4rem;
-    margin-top: 0; /* Adjusted margin */
-    /* margin-bottom: 2rem; */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    
+    font-size: 4rem; /* Font size for main title */
+    margin-top: 0; /* Remove default margin */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Shadow for text visibility */
 }
 
 #title p {
-    font-size: 1.5rem;
-    /* margin-bottom: 2rem; */
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    font-size: 1.5rem; /* Font size for subtitle */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Shadow for text visibility */
 }
 
 /* Add an overlay for better text visibility */
 #title::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: none; /* Semi-transparent overlay */
-    z-index: 0;
+    content: ""; /* Empty content for overlay */
+    position: absolute; /* Position overlay */
+    top: 0; /* Stretch to top */
+    left: 0; /* Stretch to left */
+    right: 0; /* Stretch to right */
+    bottom: 0; /* Stretch to bottom */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+    z-index: 0; /* Send overlay behind text */
 }
 
 /* Ensure text appears over the overlay */
 #title h1, #title p {
-    position: relative;
-    z-index: 1;
+    position: relative; /* Position relative to overlay */
+    z-index: 1; /* Bring text above overlay */
 }
+
 
 /* Introduction Section */
 .introduction {
+    max-width: 1400px; /* Same max width as other sections */
+    margin: 40px auto; /* Centering the section */
+    padding: 30px; /* Padding for spacing within the section */
+    background-color: #fff; /* White background for consistency */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    border-left: 6px solid #4caf50; /* Green highlight on the left */
     display: grid; /* Enable grid layout */
     grid-template-columns: 1fr; /* One column */
     gap: 20px; /* Space between grid items (paragraphs) */
-    /* margin: 20px auto;  */
-    background: rgb(0, 0, 0,0.5)
-
 }
 
 .introduction h3 {
     text-align: center; /* Center the header */
-    color: white;
-    font-size: 2rem;
+    color: #4caf50; /* Green color for the header */
+    font-size: 2rem; /* Font size for the heading */
+    margin-bottom: 15px; /* Spacing below the heading */
 }
 
 .intro-paragraph {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(249, 249, 249, 0.9); /* Light background for paragraphs */
     padding: 20px; /* Padding for each paragraph */
-    /* border-radius: 10px;  */
-    /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);  */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Shadow for depth */
 }
 
 .intro-paragraph p {
     text-align: justify; /* Justify text for better readability */
     line-height: 1.6; /* Increase line height for readability */
-    color: white;
+    color: #333; /* Dark text color for contrast */
 }
 
 
 /* Practical Questions Section */
 #practical-questions {
-    /* margin: 0 auto;  */
-    padding: 20px 0; /* Optional: Add some padding for spacing within the section */
-    text-align: center; /* Centers the heading */
-    background: rgb(0, 0, 0,0.5)
+    max-width: 1400px; /* Same max width as data sections */
+    margin: 40px auto; /* Centering the section */
+    padding: 30px; /* Padding for spacing within the section */
+    background-color: #fff; /* White background for consistency */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    border-left: 6px solid #4caf50; /* Green highlight on the left */
 }
 
 #practical-questions h3 {
-    font-size: 2em;
-    /* margin-bottom: 30px;  */
-    text-align: center; /* Ensure the heading is centered */
-    color: white;
+    font-size: 2rem; /* Font size for the heading */
+    color: #4caf50; /* Green color for the heading */
+    margin-bottom: 15px; /* Spacing below the heading */
 }
 
 #practical-questions ul {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* 2-column grid */
+    grid-template-columns: repeat(2, 1fr); /* 2-column grid */
     gap: 20px; /* Space between grid items */
     padding: 0; /* Remove padding from the list */
     list-style-type: none; /* Remove bullets from list */
     margin: 0 auto; /* Center the grid within the section */
-    
 }
 
 #practical-questions ul li {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Adds shadow around the box */
-    font-size: 1.1em;
-    line-height: 1.5;
-    text-align: center; /* Center the text inside the box */
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
+    background-color: rgba(249, 249, 249, 0.9); /* Light background for items */
+    padding: 20px; /* Padding inside each item */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Shadow around the box */
+    font-size: 1.1em; /* Font size for list items */
+    line-height: 1.5; /* Line height for better readability */
+    text-align: center; /* Center text inside the item */
+    color: #333; /* Dark text color for contrast */
 }
 
 /* Media query for responsiveness on smaller screens */
@@ -241,32 +241,31 @@ section h3, section p {
 
 /* Team Section */
 #team {
-    background-color: transparent;
-    padding: 3rem 2rem;
-    margin: 0 auto;
-    background: rgb(0, 0, 0,0.5)
+    max-width: 1400px; /* Same max width as other sections */
+    margin: 40px auto; /* Center the section */
+    padding: 3rem 2rem; /* Padding for spacing within the section */
+    background-color: #fff; /* White background for consistency */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    border-left: 6px solid #4caf50; /* Green highlight on the left */
 }
 
 #team h2 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    text-align: center;
-    color: #ffffff;
-    
-}
-#team p {
+    font-size: 2rem; /* Font size for the heading */
+    margin-bottom: 1.5rem; /* Spacing below the heading */
     text-align: center; /* Center align the header */
-    /* margin-bottom: 2rem; */
-    color: #f9f9f9;
+    color: #4caf50; /* Green color for the header */
 }
 
-#team .col {
-    margin: 70px; /* Increase space between columns */
+#team p {
+    text-align: center; /* Center align the text */
+    color: #555; /* Dark gray for readability */
 }
 
+/* Flexbox layout */
 .flex {
     display: flex;
-    flex-wrap: wrap; /* Allow items to wrap to next line */
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
     justify-content: center; /* Center align flex items */
 }
 
@@ -274,6 +273,9 @@ section h3, section p {
     flex: 1 1 30%; /* Flex-basis 30% with grow and shrink */
     margin: 10px; /* Space between columns */
     max-width: 300px; /* Limit max width */
+    display: flex; /* Align items within each column */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center align items */
 }
 
 .image {
@@ -283,53 +285,28 @@ section h3, section p {
 
 .image img {
     width: 100%; /* Responsive image */
-    height: auto;
+    height: auto; /* Maintain aspect ratio */
 }
+
 /* Team Button Centered Styling */
 .button-team {
     display: inline-block;
     margin-top: 10px;
     padding: 10px 15px;
-    color: #fff;
+    color: #fff; /* Text color for the button */
     background-color: #64b7f7; /* Button color */
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-    text-align: center;
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    text-decoration: none; /* No underline */
+    transition: background-color 0.3s ease; /* Smooth transition */
     width: 100%; /* Full width of the column */
     box-sizing: border-box; /* Ensure padding doesn’t affect width */
 }
 
-/* Center the button container */
-.col {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 /* Hover effect */
 .button-team:hover {
-    background-color: #B7E0FF; 
-    color: black;/* Darker button color on hover */
-}
-
-
-/* Button styles */
-.button {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 10px 15px;
-    color: #fff;
-    background-color: #B7E0FF; /* Button color */
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-}
-
-.button:hover {
-    background-color: #B7E0FF /* Darker button color on hover */
+    background-color: #B7E0FF; /* Lighten button color on hover */
+    color: black; /* Darker text color on hover */
 }
 
 /* Ensure proper styling across devices */
@@ -339,6 +316,7 @@ section h3, section p {
         align-items: center; /* Center align stacked items */
     }
 }
+
 
 footer {
     background-color: rgba(0, 0, 0, 0.5);
@@ -479,6 +457,34 @@ figcaption {
 section.data-cleaning {
     border-left-color: #ff9800; /* Orange highlight for Data Cleaning */
 }
+
+.visualization-gallery {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next row */
+    gap: 20px; /* Space between items */
+}
+
+.visualization-item {
+    flex: 1 1 calc(33.333% - 20px); /* Each item takes up a third of the row */
+    box-sizing: border-box; /* Include padding and border in width calculations */
+    border: 1px solid #ddd; /* Optional: border for each item */
+    border-radius: 5px; /* Optional: rounded corners */
+    padding: 10px; /* Padding inside the item */
+    text-align: center; /* Center text alignment */
+}
+
+.visualization-item img {
+    max-width: 100%; /* Responsive image */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 5px; /* Optional: rounded corners for images */
+}
+
+.visualization-item h4 {
+    margin-top: 10px; /* Space between image and title */
+    color: #333; /* Title color */
+}
+
+
 
 section.data-visualizations {
     border-left-color: #9c27b0; /* Purple highlight for Data Visualizations */

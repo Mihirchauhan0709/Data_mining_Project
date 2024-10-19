@@ -56,34 +56,118 @@
         <h3>Data Cleaning</h3>
         <p>Data cleaning is a critical step in the data collection process, ensuring that our dataset is accurate, consistent, and usable for analysis. Below are the key steps we followed:</p>
     
-        <h4>1. Removing Duplicates</h4>
-        <p>Initially, we checked for duplicate entries in our dataset, as duplicates can skew analysis results. We used Python’s Pandas library to identify and remove any duplicate records.</p>
+        <h4>1. Loading the Dataset</h4>
+        <p>We began by loading the dataset from a merged CSV file named <code>all_seasons_merged.csv</code> using Python’s Pandas library:</p>
+        <pre><code>import pandas as pd
     
-        <h4>2. Handling Missing Values</h4>
-        <p>Missing values can lead to inaccurate conclusions. We employed several strategies to address this issue:</p>
+    # Load the dataset
+    file_path = 'all_seasons_merged.csv'  # Update this with your actual file path
+    df = pd.read_csv(file_path)</code></pre>
+    
+        <h4>2. Renaming Columns</h4>
+        <p>To enhance clarity, we created a dictionary to rename the columns in our dataset. This involved replacing unclear or generic column names with descriptive ones, making the data more understandable:</p>
+        <pre><code># Create a dictionary with old and new column names
+    column_rename_dict = {
+        'Unnamed: 0': 'Index',
+        'Unnamed: 0_level_0_Player': 'Player',
+        'Unnamed: 1_level_0_Nation': 'Nation',
+        'Unnamed: 2_level_0_Pos': 'Position',
+        'Playing Time_MP': 'Matches Played (MP)',
+        # Add more renaming as needed
+    }
+    
+    # Rename the columns using the dictionary
+    df.rename(columns=column_rename_dict, inplace=True)
+    
+    # Save the updated dataframe to a new CSV file
+    df.to_csv('all_seasons_renamed.csv', index=False)</code></pre>
+    
+        <h4>3. Removing Players with No Minutes Played</h4>
+        <p>To ensure data quality, we removed players with no minutes played. This involved two steps:</p>
         <ul>
-            <li><strong>Imputation:</strong> For numerical data, we replaced missing values with the mean or median of the column.</li>
-            <li><strong>Removal:</strong> In cases where a significant portion of data was missing, we opted to remove those rows entirely to maintain data integrity.</li>
+            <li>First, we dropped rows where the <code>Minutes Played (Min)</code> column had blank entries:</li>
+            <pre><code># Remove players with no minutes played (blank)
+    df = df.dropna(subset=['Minutes Played (Min)'])</code></pre>
+            <li>Next, we filtered out players who had zero minutes played:</li>
+            <pre><code># Now, remove rows where 'Minutes Played (Min)' is 0
+    df = df[df['Minutes Played (Min)'] > 0]</code></pre>
         </ul>
     
-        <h4>3. Data Type Conversion</h4>
-        <p>We ensured that each column had the correct data type for accurate analysis. For example, date columns were converted to datetime objects, and categorical variables were encoded as necessary.</p>
+        <h4>4. Removing Aggregate Rows</h4>
+        <p>Next, we eliminated rows that contained aggregate data, such as <code>Squad Total</code> and <code>Opponent Total</code>. This step was crucial to focus on individual player performances:</p>
+        <pre><code># Remove rows with 'Squad Total' or 'Opponent Total'
+    df = df[~df['Player'].isin(['Squad Total', 'Opponent Total'])]</code></pre>
     
-        <h4>4. Normalization and Scaling</h4>
-        <p>To prepare the data for modeling, we normalized and scaled the numerical features. This step is crucial for algorithms that rely on distance metrics. We used Min-Max scaling to transform our data into a uniform range.</p>
-    
-        <h4>5. Outlier Detection</h4>
-        <p>Outliers can significantly affect our analysis. We employed the Z-score method to detect and assess outliers. Depending on their impact, we either transformed or removed them from our dataset.</p>
+        <h4>5. Dropping Unnecessary Columns</h4>
+        <p>We checked for any unnecessary columns in the dataset, such as the <code>Index</code> column, and removed it to streamline our data for analysis:</p>
+        <pre><code># Check if 'Index' column exists before dropping it
+    if 'Index' in df.columns:
+        df.drop(columns=['Index'], inplace=True)</code></pre>
     
         <h4>6. Final Review</h4>
-        <p>After applying the above techniques, we conducted a final review of the dataset to ensure its quality. We generated summary statistics and visualizations to confirm that the data was now clean and ready for analysis.</p>
+        <p>After completing these cleaning steps, we conducted a final review of the dataset. We printed the cleaned DataFrame to verify its integrity and saved the final version to <code>cleaned_dataset_no_index.csv</code>:</p>
+        <pre><code># Print the cleaned DataFrame
+    print(df.head())
+    
+    # Save the cleaned dataset to a new CSV file
+    df.to_csv('cleaned_dataset_no_index.csv', index=False)</code></pre>
     </section>
+    
     
 
     <section class="data-section data-visualizations">
         <h3>Data Visualizations</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur consequat felis sed ante pharetra, ac vehicula metus laoreet. In posuere erat at metus cursus facilisis.</p>
+    <p>Data visualizations are essential for interpreting complex datasets and conveying insights effectively. By representing data visually, we can identify patterns, trends, and outliers that may not be apparent in raw data. Below are some of the visualizations we created to illustrate key findings from our analysis:</p>
+    
+        
+        <div class="visualization-gallery">
+            <div class="visualization-item">
+                <h4>Top 10 Players by Goals Over Seasons</h4>
+                <img src="images/visualiztion/1.png" alt="Description of Visualization 1" />
+            </div>
+            <div class="visualization-item">
+                <h4>Goals per Season</h4>
+                <img src="images/visualiztion/2.png" alt="Description of Visualization 2" />
+            </div>
+            <div class="visualization-item">
+                <h4>Top Players by Goals Across Seasons</h4>
+                <img src="images/visualiztion/3.png" alt="Description of Visualization 3" />
+            </div>
+            <div class="visualization-item">
+                <h4>Minutes Played vs. Goals Scored</h4>
+                <img src="images/visualiztion/4.png" alt="Description of Visualization 4" />
+            </div>
+            <div class="visualization-item">
+                <h4>Goals and Assists per 90 Minutes by Season</h4>
+                <img src="images/visualiztion/5.png" alt="Description of Visualization 5" />
+            </div>
+            <div class="visualization-item">
+                <h4>Distribution of Goals per 90 Minutes by Position</h4>
+                <img src="images/visualiztion/6.png" alt="Description of Visualization 6" />
+            </div>
+            <div class="visualization-item">
+                <h4>Proportion of Red and Yellow Cards</h4>
+                <img src="images/visualiztion/7.png" alt="Description of Visualization 7" />
+            </div>
+            <div class="visualization-item">
+                <h4>Density Plot - Expected Goals (xG) vs Non-Penalty xG (npxG)</h4>
+                <img src="images/visualiztion/8.png" alt="Description of Visualization 8" />
+            </div>
+            <div class="visualization-item">
+                <h4>Top 10 Players by Contribution to Team Goals (%)</h4>
+                <img src="images/visualiztion/9.png" alt="Description of Visualization 9" />
+            </div>
+            <div class="visualization-item">
+                <h4>Performance of [Player Name]</h4>
+                <img src="images/visualiztion/10.png" alt="Description of Visualization 10" />
+            </div>
+            <div class="visualization-item">
+                <h4>Total Matches Played per Team by Season</h4>
+                <img src="images/visualiztion/11.png" alt="Description of Visualization 11" />
+            </div>
+        </div>
     </section>
+    
     
 </body>
 
