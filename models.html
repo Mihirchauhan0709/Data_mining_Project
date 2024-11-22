@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoalTrack - Models Implemented</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to the shared CSS file -->
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="data-collection.html">Data Collection</a></li>
+            <li><a href="models.html" class="active">Models Implemented</a></li>
+            <li><a href="conclusion.html">Conclusion</a></li>
+            <li><a href="references.html">References</a></li>
+        </ul>
+    </nav>
+
+    <header id="models-title">
+        <h1>Models Implemented</h1>
+        <p>Explore the advanced models developed for football analytics, providing insights into player performance and team dynamics.</p>
+    </header>
+    
+    <section class="models-section">
+        <h3>Player Dataset Models</h3>
+        <ul class="models-list">
+            <li>
+                <h4>Top 20 Predicted Goal Scorers for the Coming Season</h4>
+                <p>This model forecasts the top 20 players expected to score the most goals in the upcoming football season. By leveraging machine learning techniques, the model utilizes player features such as matches played, minutes on the field, expected goals, non-penalty expected goals, progressive carries, and passes, among others. The output is based on a trained regression model that predicts goal-scoring potential for each player. The insights help analysts and coaches focus on key players and optimize their strategies for the season.</p>
+                <div class="models-image-container">
+                    <img src="images/top-scorers.png" alt="Top 20 Predicted Goal Scorers">
+                </div>
+            </li>
+            <li>
+                <h4>Top 20 Predicted Assist Leaders for the Coming Season</h4>
+                <p>This model forecasts the top 20 players expected to lead in assists for the upcoming football season. Utilizing a Random Forest Regressor, it analyzes features such as progressive passes, expected assists, non-penalty expected goals assists, player age, and minutes played to predict assist potential. By examining historical player data, this model offers valuable insights for team strategists and coaches, highlighting the most impactful playmakers in the game.</p>
+                <div class="models-image-container">
+                    <img src="images/top-20-predicted-assists.png" alt="Top 20 Predicted Assist Leaders for the Coming Season" class="models-image">
+                </div>
+            </li>
+        </ul>
+           
+            <h3>team Dataset Models</h3>
+            <ul class="models-list">
+            <li>
+                <h4>Team Data Analysis and Player Recommendations</h4>
+                <p>This model leverages cosine similarity to recommend players for football teams based on performance metrics. By analyzing goals, assists, progressive carries, and passes, it calculates a comprehensive performance score for each player. Using these scores, the model identifies similar teams and recommends top-performing players from these teams who are not currently part of the target team. The recommendations are ranked based on the predicted performance score, enabling teams to strengthen their roster strategically.</p>
+                <div class="models-image-container">
+                    <img src="images/team-player-recommendations.png" alt="Team Data Analysis and Player Recommendations" class="models-image">
+                </div>
+            </li>
+            <li>
+                <h4>Football Pitch Lineup Visualization</h4>
+                <p>
+                    This model generates unique football lineups for the 4-3-3 formation, visualized on a football pitch for each season. 
+                    Players are assigned positions based on their performance metrics, primarily "Goals + Assists," ensuring the strongest lineup for each season.
+                </p>
+                <p>
+                    Below are the visualized lineups for four seasons: 2020-2021, 2021-2022, 2022-2023, and 2023-2024. The lineups illustrate the strongest performing players plotted at their respective positions on a football pitch.
+                </p>
+                
+                <!-- 2020-2021 Lineup -->
+                <div class="lineup-section">
+                    <h5>2020-2021 Lineup</h5>
+                    <img src="images/lineup-2020-2021..png" alt="Football Pitch Lineup for 2020-2021" class="models-image">
+                </div>
+            
+                <!-- 2021-2022 Lineup -->
+                <div class="lineup-section">
+                    <h5>2021-2022 Lineup</h5>
+                    <img src="images/lineup-2021-2022..png" alt="Football Pitch Lineup for 2021-2022" class="models-image">
+                </div>
+            
+                <!-- 2022-2023 Lineup -->
+                <div class="lineup-section">
+                    <h5>2022-2023 Lineup</h5>
+                    <img src="images/lineup-2022-2023..png" alt="Football Pitch Lineup for 2022-2023" class="models-image">
+                </div>
+            
+                <!-- 2023-2024 Lineup -->
+                <div class="lineup-section">
+                    <h5>2023-2024 Lineup</h5>
+                    <img src="images/lineup-2023-2024..png" alt="Football Pitch Lineup for 2023-2024" class="models-image">
+                </div>
+            </li>
+            
+            <li>
+                <h4>Top 10 Predicted Goal Scorers</h4>
+                <p>
+                    This model predicts the top 10 players expected to score the most goals in the upcoming season. Using past performance data and a machine learning model, the system analyzes key player features to generate the predictions.
+                </p>
+                <p>
+                    The results are visualized in a bar chart, showing the predicted goals alongside the players' names for an easy and intuitive comparison.
+                </p>
+                <div class="models-image-container">
+                    <img src="images/top-goal-scorers-prediction.png" alt="Top 10 Predicted Goal Scorers" class="models-image">
+                </div>
+            </li>
+            
+            <li>
+                <h4>Player Classification Using Gradient Boosting</h4>
+                <p>
+                    This model applies a Gradient Boosting Classifier to categorize football players into distinct performance categories. 
+                    It leverages features such as goals, assists, and other key metrics to assign players into predicted categories, enabling 
+                    better analysis of player roles and contributions.
+                </p>
+                <p>
+                    A detailed classification report and confusion matrix visualize the model's performance. Below is a sample output 
+                    showcasing a subset of players and their predicted categories.
+                </p>
+                <div class="models-image-container">
+                    <img src="images/confusion-matrix-classification.png" alt="Confusion Matrix for Player Classification" class="models-image">
+                </div>
+                <p>
+                    A sample of categorized players is as follows:
+                </p>
+            </li>
+            
+
+        </ul>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 GoalTrack. All rights reserved.</p>
+            <p>Contact us: <a href="mailto:support@goaltrack.com">support@goaltrack.com</a></p>
+            <ul class="social-media">
+                <li><a href="https://twitter.com/" target="_blank">Twitter</a></li>
+                <li><a href="https://www.facebook.com/" target="_blank">Facebook</a></li>
+                <li><a href="https://www.instagram.com/" target="_blank">Instagram</a></li>
+                <li><a href="https://www.linkedin.com/" target="_blank">LinkedIn</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>
