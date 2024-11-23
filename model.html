@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Models</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <h1 class="navbar-brand">Football Insights</h1>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="intro.html">Introduction</a></li>
+                    <li><a href="data.html" >Data Collection</a></li>
+                    <li><a href="model.html" class="active">Model</a></li>
+                    <li><a href="result.html">Result & Conclusion</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="models-section">
+            <h3>Player Dataset Models</h3>
+            <ul class="models-list">
+                <li>
+                    <h4>Top 20 Predicted Goal Scorers for the Coming Season</h4>
+                    <p>
+                        This model identifies the top 20 players likely to lead in goal-scoring during the upcoming football season. By analyzing extensive historical data, the model uses advanced regression techniques to predict goal-scoring potential for each player. The insights are particularly valuable for coaches, scouts, and analysts in identifying key performers who can make a significant impact.
+                    </p>
+                    <p>
+                        <strong>Key Features Used for Prediction:</strong>
+                    </p>
+                    <ul>
+                        <li><strong>Matches Played:</strong> Number of matches a player has participated in, reflecting consistency and availability.</li>
+                        <li><strong>Minutes on the Field:</strong> Time spent on the pitch, indicating a player’s role and reliability.</li>
+                        <li><strong>Expected Goals (xG):</strong> A metric estimating the likelihood of scoring based on the quality of chances.</li>
+                        <li><strong>Non-Penalty Expected Goals (npxG):</strong> Evaluates goal-scoring opportunities excluding penalties, emphasizing open-play contributions.</li>
+                        <li><strong>Progressive Carries:</strong> Dribbles that move the ball significantly closer to the opponent's goal.</li>
+                        <li><strong>Progressive Passes:</strong> Passes that advance the ball into dangerous areas, showcasing creativity and playmaking skills.</li>
+                    </ul>
+                    <p>
+                        The predictions are generated using a robust training dataset, including past player performances, team dynamics, and competitive league data. The output is visualized as a bar chart, ranking players based on their projected goal tally. This allows stakeholders to easily compare players’ predicted performance and identify top contenders for individual awards or crucial team roles.
+                    </p>
+                    <p>
+                        <strong>Notable Insights from the 2023-2024 Prediction:</strong>
+                    </p>
+                    <ul>
+                        <li><strong>Lionel Messi:</strong> Predicted to dominate the season with 27.9 goals, demonstrating his consistent brilliance even in later years of his career.</li>
+                        <li><strong>Karim Benzema:</strong> A close second, showcasing his adaptability and continued importance to his team with a predicted 25.6 goals.</li>
+                        <li><strong>Emerging Stars:</strong> Players like Jude Bellingham and Artem Dovbyk are expected to make significant contributions, reflecting their growing influence in top-flight football.</li>
+                    </ul>
+                    <p>
+                        The model's accuracy and depth provide clubs with a strategic advantage, helping to optimize player selection, match preparations, and long-term planning. By combining traditional statistics with modern analytics, this tool delivers a comprehensive outlook on player performance.
+                    </p>
+                    <div class="models-image-container">
+                        <img src="images/top-scorers.png" alt="Top 20 Predicted Goal Scorers">
+                    </div>
+                </li>
+                
+
+                <li>
+                    <h4>Top 20 Predicted Assist Leaders for the Coming Season</h4>
+                    <p>
+                        This model identifies the top 20 players likely to excel in providing assists during the upcoming football season. Leveraging advanced machine learning techniques, such as a Random Forest Regressor, the model evaluates player features that contribute to their playmaking abilities.
+                    </p>
+                    <p>
+                        <strong>Key Features Used for Prediction:</strong>
+                    </p>
+                    <ul>
+                        <li><strong>Progressive Passes:</strong> Passes that significantly advance the ball towards the opponent’s goal.</li>
+                        <li><strong>Expected Assists (xA):</strong> The likelihood of a pass leading to a goal, based on historical data and context.</li>
+                        <li><strong>Non-Penalty Expected Goals Assists (npxGA):</strong> Assists derived from non-penalty situations, focusing on open play contributions.</li>
+                        <li><strong>Player Age:</strong> Incorporates experience and physical peak years into the analysis.</li>
+                        <li><strong>Minutes Played:</strong> Time spent on the field, reflecting the player’s availability and role in the team.</li>
+                    </ul>
+                    <p>
+                        By analyzing these features, the model forecasts assist potential for players across various leagues, offering critical insights into emerging playmakers and consistent performers.
+                    </p>
+                    <p>
+                        <strong>Notable Insights from the 2023-2024 Prediction:</strong>
+                    </p>
+                    <ul>
+                        <li><strong>Antoine Griezmann:</strong> Predicted to top the assists chart with 14.7 assists, showcasing his creative dominance and team impact.</li>
+                        <li><strong>Alex Baena:</strong> A rising star in the playmaking domain, with a forecasted 13.3 assists.</li>
+                        <li><strong>Karim Benzema:</strong> Continues to display his multifaceted abilities, combining goal-scoring and assist contributions, with a predicted 12.3 assists.</li>
+                        <li><strong>Young Talents:</strong> Nico Williams and Vinícius Júnior demonstrate their growing influence with double-digit predicted assists.</li>
+                    </ul>
+                    <p>
+                        The model output is visualized through a bar chart, ranking players based on their predicted assists. This visualization aids analysts and teams in identifying top-performing creators and planning tactics around these players.
+                    </p>
+                    <div class="models-image-container">
+                        <img src="images/top-20-predicted-assists.png" alt="Top 20 Predicted Assist Leaders" class="models-image">
+                    </div>
+                </li>
+                
+                <li>
+                    <h4>Clustering Analysis for Player Insights</h4>
+                    <p>
+                        This model employs K-Means clustering to uncover patterns in player behavior and performance. It identifies distinct groups of players based on their discipline, workload, creativity, and goal-scoring capabilities:
+                    </p>
+                
+                    <!-- Clustering Gallery -->
+                    <div class="clustering-gallery">
+                        <!-- Discipline-Based Clustering -->
+                        <div class="clustering-item">
+                            <h5>Discipline-Based Clustering</h5>
+                            <p>Groups players by their yellow and red card tendencies to identify discipline profiles.</p>
+                            <img src="images/clustering-discipline.png" alt="Discipline-Based Clustering">
+                        </div>
+                
+                        <!-- Workload-Based Clustering -->
+                        <div class="clustering-item">
+                            <h5>Workload-Based Clustering</h5>
+                            <p>Clusters players based on minutes played and matches played to highlight player workload.</p>
+                            <img src="images/clustering-workload.png" alt="Workload-Based Clustering">
+                        </div>
+                
+                        <!-- Playmaking and Creativity Clustering -->
+                        <div class="clustering-item">
+                            <h5>Playmaking and Creativity Clustering</h5>
+                            <p>Groups players by their progressive passes and assists to measure creativity.</p>
+                            <img src="images/clustering-creativity.png" alt="Playmaking and Creativity Clustering">
+                        </div>
+                
+                        <!-- Goals vs Assists Clustering -->
+                        <div class="clustering-item">
+                            <h5>Goals vs Assists Clustering</h5>
+                            <p>Identifies clusters of players based on their goal and assist contributions.</p>
+                            <img src="images/clustering-goals-assists.png" alt="Goals vs Assists Clustering">
+                        </div>
+                    </div>
+                </li>
+                
+
+
+                <li>
+                        <h3>Best 11 Players Model</h3>
+                        <p>
+                            This model identifies the top 11 players for each football season using a 4-3-3 formation. By analyzing individual performance metrics such as <strong>Goals</strong>, <strong>Assists</strong>, and <strong>Minutes Played</strong>, the model selects the best-performing players in their respective positions. The lineup is optimized to include:
+                        </p>
+                        
+                        <div class="best-11-grid">
+                            <div class="position-card">
+                                <h4>1 Goalkeeper (GK)</h4>
+                                <p>The last line of defense, tasked with stopping the opponent's shots and organizing the backline.</p>
+                            </div>
+                            <div class="position-card">
+                                <h4>4 Defenders (DF)</h4>
+                                <p>Responsible for preventing goals and supporting the team in building play from the back.</p>
+                            </div>
+                            <div class="position-card">
+                                <h4>3 Midfielders (MF)</h4>
+                                <p>The engine of the team, linking defense and attack while controlling the tempo of the game.</p>
+                            </div>
+                            <div class="position-card">
+                                <h4>3 Forwards (FW)</h4>
+                                <p>The primary goal-scorers, leading the attack and creating opportunities to score.</p>
+                            </div>
+                        </div>
+                        
+                        <p>The team is determined for each season based on a comprehensive evaluation of player contributions to their teams.</p>
+            
+                        <!-- Visualization Section -->
+<div class="best-11-grid">
+    <div class="models11-image-container">
+        <h4>2020-2021 Season</h4>
+        <p>The best 11 players for the 2020-2021 season, ranked by Goals + Assists:</p>
+        <img src="images/best_11_2020-2021_goals_assists.png" alt="Best 11 Players for 2020-2021 Season">
+    </div>
+
+    <div class="models11-image-container">
+        <h4>2021-2022 Season</h4>
+        <p>The best 11 players for the 2021-2022 season, ranked by Goals + Assists:</p>
+        <img src="images/best_11_2021-2022_goals_assists.png" alt="Best 11 Players for 2021-2022 Season">
+    </div>
+
+    <div class="models11-image-container">
+        <h4>2022-2023 Season</h4>
+        <p>The best 11 players for the 2022-2023 season, ranked by Goals + Assists:</p>
+        <img src="images/best_11_2022-2023_goals_assists.png" alt="Best 11 Players for 2022-2023 Season">
+    </div>
+
+    <div class="models11-image-container">
+        <h4>2023-2024 Season</h4>
+        <p>The best 11 players for the 2023-2024 season, ranked by Goals + Assists:</p>
+        <img src="images/best_11_2023-2024_goals_assists.png" alt="Best 11 Players for 2023-2024 Season">
+    </div>
+</div>
+
+                </li>
+            </ul>
+
+            <h3>Team Dataset Models</h3>
+            <ul class="models-list">
+                <li>
+                    <h4>Team Data Analysis and Player Recommendations</h4>
+                    <p>
+                        This model employs cosine similarity to identify and recommend top-performing players for football teams. By analyzing key performance metrics, the model suggests players who can strengthen team dynamics based on their statistical contributions.
+                    </p>
+                    <p>
+                        <strong>Key Metrics Analyzed:</strong>
+                    </p>
+                    <ul>
+                        <li><strong>Goals:</strong> Measures a player's finishing ability and scoring contribution.</li>
+                        <li><strong>Assists:</strong> Highlights creative playmaking and team support.</li>
+                        <li><strong>Progressive Carries:</strong> Evaluates how effectively a player moves the ball forward during play.</li>
+                        <li><strong>Progressive Passes:</strong> Assesses the player's ability to advance the ball towards the opponent's goal.</li>
+                    </ul>
+                    <p>
+                        The model assigns a performance score to each player and identifies those who align closely with a team's needs. It uses cosine similarity to match player profiles across teams, ensuring targeted and effective recommendations.
+                    </p>
+                    <p>
+                        <strong>Notable Insights:</strong>
+                    </p>
+                    <ul>
+                        <li><strong>Lionel Messi:</strong> Tops the recommendations with the highest performance scores, showcasing his consistent dominance across key metrics.</li>
+                        <li><strong>Jude Bellingham:</strong> Emerging as a top-choice midfielder due to his balanced attacking and defensive contributions.</li>
+                        <li><strong>Karim Benzema:</strong> Continues to be a standout forward with remarkable scoring and playmaking abilities.</li>
+                        <li><strong>Kirian Rodríguez:</strong> A lesser-known but highly impactful player making significant contributions in progressive metrics.</li>
+                    </ul>
+                    <p>
+                        The bar chart below visualizes the top 10 most recommended players across all teams. These recommendations provide valuable insights for team managers and analysts to enhance their squad's capabilities.
+                    </p>
+                    <div class="models-image-container">
+                        <img src="images/team-player-recommendations.png" alt="Team Data Analysis and Player Recommendations">
+                    </div>
+                </li>
+                
+
+                <li>
+                    <h4>Top 10 Predicted Goal Scorers</h4>
+                    <p>
+                        This model predicts the top 10 players expected to score the most goals in the upcoming football season. By utilizing advanced machine learning techniques, the model analyzes historical player performance and key metrics to identify the most likely top scorers.
+                    </p>
+                    <p>
+                        <strong>Key Features Used:</strong>
+                    </p>
+                    <ul>
+                        <li><strong>Goals:</strong> Total goals scored in previous seasons.</li>
+                        <li><strong>Expected Goals (xG):</strong> A measure of the quality of goal-scoring opportunities.</li>
+                        <li><strong>Minutes Played:</strong> Considers how much playing time the player had.</li>
+                        <li><strong>Non-Penalty Expected Goals:</strong> Excludes penalties to assess open-play effectiveness.</li>
+                        <li><strong>Progressive Carries and Passes:</strong> Tracks a player's ability to advance the ball towards the opponent’s goal.</li>
+                    </ul>
+                    <p>
+                        <strong>Key Insights:</strong>
+                    </p>
+                    <ul>
+                        <li><strong>Artem Dovbyk:</strong> Tops the chart with a predicted 24.8 goals, showcasing his remarkable consistency in finishing.</li>
+                        <li><strong>Lionel Messi:</strong> Predicted to score 23.3 goals, demonstrating his sustained brilliance in attack.</li>
+                        <li><strong>Karim Benzema:</strong> Remains a dominant force with 22.1 predicted goals.</li>
+                        <li><strong>Robert Lewandowski:</strong> A proven striker expected to net 21.9 goals, maintaining his elite status.</li>
+                        <li><strong>Gerard Moreno:</strong> Among the top performers with a predicted 11.6 goals, emphasizing his attacking contributions.</li>
+                    </ul>
+                    <p>
+                        This visualization offers a clear representation of the predicted goals for each player, providing valuable insights for coaches, analysts, and fantasy football enthusiasts.
+                    </p>
+                    <div class="models-image-container">
+                        <img src="images/top-goal-scorers-prediction.png" alt="Top 10 Predicted Goal Scorers">
+                    </div>
+                </li>
+                
+
+                <li>
+                    <h4>Player Classification Using Gradient Boosting</h4>
+                    <p>
+                        This model uses a Gradient Boosting Classifier to categorize football players into distinct performance categories based on their on-field metrics. The classification process helps to identify player roles, strengths, and areas of excellence within a team structure.
+                    </p>
+                    <p>
+                        <strong>Features Used:</strong>
+                    </p>
+                    <ul>
+                        <li><strong>Goals and Assists:</strong> Captures the player's direct contributions to scoring.</li>
+                        <li><strong>Progressive Passes and Carries:</strong> Reflects a player's ability to advance the ball effectively.</li>
+                        <li><strong>Defensive Metrics:</strong> Includes tackles, interceptions, and blocks to identify defensive roles.</li>
+                        <li><strong>Minutes Played:</strong> Accounts for player workload and participation in matches.</li>
+                    </ul>
+                    <p>
+                        <strong>Categories:</strong>
+                    </p>
+                    <ul>
+                        <li><strong>Aggressive Defender:</strong> Focuses on strong defensive actions with limited offensive contributions.</li>
+                        <li><strong>All-Rounder:</strong> Balances defensive, creative, and scoring abilities.</li>
+                        <li><strong>Elite Goalscorer:</strong> Specializes in scoring goals at a high level of efficiency.</li>
+                        <li><strong>Playmaker:</strong> Excels in creating opportunities and controlling the tempo of the game.</li>
+                        <li><strong>Workhorse:</strong> High effort across the pitch, contributing to multiple areas without specialization.</li>
+                    </ul>
+                    <p>
+                        <strong>Insights from the Confusion Matrix:</strong>
+                    </p>
+                    <ul>
+                        <li>The model accurately identifies "Playmakers" and "Others" categories with high precision.</li>
+                        <li>There is some overlap between "Aggressive Defender" and "Workhorse," suggesting shared defensive attributes.</li>
+                        <li>"Elite Goalscorers" and "Elite Playmakers" are correctly categorized based on specific high-impact features like goals and assists.</li>
+                    </ul>
+                    <p>
+                        This classification helps coaches and analysts evaluate team dynamics, identify key player roles, and plan strategies around player strengths.
+                    </p>
+                    <div class="models-image-container">
+                        <img src="images/confusion-matrix-classification.png" alt="Confusion Matrix for Player Classification">
+                    </div>
+                </li>
+                
+                <li>
+                    <h4>Predicting Match Win Probabilities</h4>
+                    <p>
+                        This model calculates the win probabilities for two teams facing each other using player-level and team-level stats. The prediction is based on a machine learning model trained on historical data, including features such as goals scored, assists, progressive passes, and defensive metrics.
+                    </p>
+                    <p>
+                        By aggregating individual player stats into team-level metrics, the model ensures comprehensive analysis. For example, if Team A has a stronger attack (e.g., higher expected goals and progressive carries) and Team B has better defense (e.g., fewer goals conceded), the model balances these metrics to predict win probabilities.
+                    </p>
+                    <h5>How it Works:</h5>
+                    <ul>
+                        <li>Aggregates player-level stats into team-level features like average goals and assists.</li>
+                        <li>Uses these features to predict the win probabilities for each team.</li>
+                        <li>Normalizes the probabilities to provide insights for both teams in a match-up.</li>
+                    </ul>
+                    <h5>Example Prediction:</h5>
+                    <p>
+                        For a match between Athletic Club and Barcelona, the model predicted:
+                        <ul>
+                            <li><strong>Athletic Club:</strong> 32.45%</li>
+                            <li><strong>Barcelona:</strong> 67.55%</li>
+                        </ul>
+                    </p>
+                    <div class="models-image-container">
+                        <img src="images/team-win-probability.png" alt="Team Win Probability Visualization">
+                    </div>
+                    <p>
+                        This model helps coaches and analysts evaluate match outcomes based on team composition, player performance, and opponent stats. It’s ideal for strategizing team lineups and analyzing potential match outcomes.
+                    </p>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 Football Insights. All rights reserved.</p>
+    </footer>
+</body>
+</html>

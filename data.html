@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Collection and Visualization</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <h1 class="navbar-brand">Football Insights</h1>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="intro.html">Introduction</a></li>
+                    <li><a href="data.html" class="active">Data Collection</a></li>
+                    <li><a href="model.html">Model</a></li>
+                    <li><a href="result.html">Result & Conclusion</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="data-section data-source">
+            <h3 class="section-title">Data Sources</h3>
+            <p>
+                We collected detailed player and team statistics from <a href="https://fbref.com/" target="_blank">FBref.com</a>, a trusted source for comprehensive football analytics. FBref provides in-depth data on players, teams, matches, and tournaments, making it an ideal platform for gathering performance metrics.
+            </p>
+            <p>
+                The data spans four football seasons, from 2020-2021 to 2023-2024, covering major leagues and tournaments such as La Liga, the Premier League, and the UEFA Champions League. Our primary focus was to extract performance metrics that could reveal insights into player efficiency, team strategies, and overall trends in football performance. 
+            </p>
+            <p>
+                Each season's data was scraped separately, capturing the dynamic nature of football where player forms, team compositions, and tactical approaches vary each year. The data was then organized into two comprehensive datasets:
+            </p>
+            <ul class="data-list">
+                <li>
+                    <strong>Player Stats:</strong> This dataset includes individual player-level metrics such as:
+                    <ul class="sub-list">
+                        <li><span class="bullet">⚽</span> Goals, assists, and shots.</li>
+                        <li><span class="bullet">🔑</span> Passing accuracy and key passes.</li>
+                        <li><span class="bullet">🛡️</span> Defensive actions like tackles, interceptions, and blocks.</li>
+                        <li><span class="bullet">⏱️</span> Minutes played and appearances.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Team Stats:</strong> This dataset aggregates team-level metrics, such as:
+                    <ul class="sub-list">
+                        <li><span class="bullet">📊</span> Possession percentage and passing accuracy.</li>
+                        <li><span class="bullet">🎯</span> Total shots, shots on target, and expected goals (xG).</li>
+                        <li><span class="bullet">🛡️</span> Defensive metrics like clean sheets and tackles per match.</li>
+                        <li><span class="bullet">📕</span> Disciplinary data including yellow and red cards.</li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <p>
+                The collected data serves as the foundation for our analysis, allowing us to explore various aspects of football performance, such as the correlation between player metrics and match outcomes, the impact of team formations on success rates, and trends in disciplinary actions over time.
+            </p>
+            <p>
+                By leveraging FBref's robust and reliable dataset, we ensured the accuracy and relevance of the insights derived from our analysis. The structured data collection process enabled us to combine season-specific statistics into unified datasets for comprehensive evaluations and visualizations.
+            </p>
+        </section>
+        
+
+        <section class="data-section data-scraping">
+            <h3 class="section-title">Data Collection Process</h3>
+            <h4>1. Collecting Player Stats</h4>
+            <p>
+                Player statistics were scraped using <code>Selenium</code> and <code>BeautifulSoup</code>. Selenium was used to handle dynamic content on the FBref website. For example, the following code was used to scrape data for the 2020-2021 La Liga season:
+            </p>
+            <pre><code>from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from bs4 import BeautifulSoup
+import pandas as pd
+
+# URL for La Liga 2020-2021 player stats
+url = 'https://fbref.com/en/comps/12/2020-2021/stats/2020-2021-La-Liga-Stats'
+
+# Setup Selenium with headless Chrome
+chrome_options = Options()
+chrome_options.add_argument("--headless")
+driver = webdriver.Chrome(options=chrome_options)
+
+# Open the URL and extract the page source
+driver.get(url)
+soup = BeautifulSoup(driver.page_source, 'html.parser')
+
+# Find the player stats table by its ID
+table = soup.find('table', {'id': 'stats_standard'})
+df = pd.read_html(str(table))[0]  # Parse the table into a DataFrame
+
+# Save the data to a CSV file
+df.to_csv('la_liga_2020_2021_player_stats.csv', index=False)</code></pre>
+            <p>
+                This process was repeated for the 2017-2018, 2018-2019, 2019-2020, and 2020-2021 seasons, resulting in four separate files. The files were later combined into a single dataset: <code>Player_stats.csv</code>.
+            </p>
+
+            <h4>2. Collecting Team Stats</h4>
+            <p>
+                Team statistics were collected using <code>BeautifulSoup</code> and <code>requests</code>. We fetched URLs for each team, scraped relevant tables, and combined the data. Here’s an example of extracting team stats for the 2020-2021 La Liga season:
+            </p>
+            <pre><code>from bs4 import BeautifulSoup
+import requests
+
+# Fetch team URLs
+response = requests.get('https://fbref.com/en/comps/12/2020-2021/2020-2021-La-Liga-Stats')
+soup = BeautifulSoup(response.text, 'html.parser')
+team_links = [f"https://fbref.com{a['href']}" for a in soup.find_all('a', href=True) if '/squads/' in a['href']]
+
+# Scrape "Scores & Fixtures" and "Shooting" tables for each team
+for team_url in team_links:
+    team_page = requests.get(team_url)
+    team_soup = BeautifulSoup(team_page.text, 'html.parser')
+    scores_fixtures = pd.read_html(str(team_soup), match="Scores & Fixtures")[0]
+    # Process and save the data...</code></pre>
+            <p>
+                This process was also repeated for four seasons and the resulting files were merged into <code>Team_Stats.csv</code>.
+            </p>
+
+            <h4>3. Collecting Additional Team Data</h4>
+<p>
+    In addition to the initial <code>Team_Stats.csv</code> dataset, another dataset named <code>Team Dataset 2</code> (originally <code>cleaned_dataset_no_index.csv</code>) was created. This dataset aggregates and enhances the initial team statistics with additional cleaned and processed metrics. It combines player and team-level information for a more comprehensive analysis.
+</p>
+<pre><code>import pandas as pd
+
+# Load the cleaned dataset
+cleaned_data = pd.read_csv('cleaned_dataset_no_index.csv')
+
+# Display the first few rows of the dataset
+print(cleaned_data.head())</code></pre>
+<p>
+    The <code>Team Dataset 2</code> was used alongside the original <code>Team_Stats.csv</code> for advanced team-level analysis, providing deeper insights into team dynamics and player contributions.
+</p>
+        </section>
+
+        <section class="data-cleaning">
+            <h4>Data Cleaning Steps</h4>
+            <p>
+                Data cleaning is a crucial part of the process to ensure accuracy and usability. Here are the steps we followed to clean our dataset:
+            </p>
+            <ul>
+                <li>Removed rows with missing values for key metrics like goals and assists.</li>
+                <li>Renamed ambiguous column headers to more descriptive names.</li>
+                <li>Filtered out players with zero minutes played to focus on active participants.</li>
+                <li>Removed duplicate rows and aggregate data like "Team Totals".</li>
+            </ul>
+            <pre>
+        <code>
+        # Remove missing values
+        df = df.dropna(subset=["Goals", "Assists"])
+        
+        # Rename columns
+        df.rename(columns={"Gls": "Goals", "Ast": "Assists"}, inplace=True)
+        
+        # Filter active players
+        df = df[df["Minutes Played"] > 0]
+        </code>
+            </pre>
+        </section>
+        
+
+        <section class="data-section data-visualizations">
+            <h3 class="section-title" >Data Visualizations</h3>
+            <p>
+                Data visualizations are essential for interpreting complex datasets and conveying insights effectively. By representing data visually, we can identify patterns, trends, and outliers that may not be apparent in raw data. Below are some of the visualizations we created to illustrate key findings from our analysis:
+            </p>
+        
+            <div class="visualization-gallery">
+                <div class="visualization-item">
+                    <h4>Top 10 Players by Goals Over Seasons</h4>
+                    <img src="images/visualiztion/1.png" alt="Top 10 players by goals scored over multiple seasons">
+                    <p>
+                        This bar chart highlights the top 10 players based on the total number of goals they scored across multiple seasons. By comparing goal-scoring performance year over year, it provides insights into consistency, improvement, or decline in player productivity.
+                    </p>
+                </div>
+        
+                <div class="visualization-item">
+                    <h4>Goals per Season</h4>
+                    <img src="images/visualiztion/2.png" alt="Goals scored per season">
+                    <p>
+                        This line graph shows the total goals scored across all players in each season, offering a macro-level view of scoring trends. Peaks or troughs may indicate changes in gameplay dynamics, tactical shifts, or significant league-wide events.
+                    </p>
+                </div>
+        
+                <div class="visualization-item">
+                    <h4>Top Players by Goals Across Seasons</h4>
+                    <img src="images/visualiztion/3.png" alt="Players with the highest goals scored across seasons">
+                    <p>
+                        This visualization compares the cumulative goal-scoring records of the top players over the analyzed seasons. It sheds light on the dominance of individual players and their relative contributions compared to peers.
+                    </p>
+                </div>
+        
+                <div class="visualization-item">
+                    <h4>Minutes Played vs. Goals Scored</h4>
+                    <img src="images/visualiztion/4.png" alt="Scatter plot of minutes played versus goals scored">
+                    <p>
+                        The scatter plot examines the relationship between the number of minutes played and goals scored by players. Clusters and outliers reveal players who maximize their time on the field versus those who underperform.
+                    </p>
+                </div>
+        
+                <div class="visualization-item">
+                    <h4>Distribution of Goals per 90 Minutes by Position</h4>
+                    <img src="images/visualiztion/6.png" alt="Goals per 90 minutes distribution by player positions">
+                    <p>
+                        This box plot shows the distribution of goals scored per 90 minutes categorized by player positions. It highlights positional differences in scoring frequency and identifies roles that contribute most to offensive play.
+                    </p>
+                </div>
+        
+                <div class="visualization-item">
+                    <h4>Proportion of Red and Yellow Cards</h4>
+                    <img src="images/visualiztion/7.png" alt="Proportion of red and yellow cards">
+                    <p>
+                        The pie chart depicts the proportion of red and yellow cards received by players across seasons, reflecting disciplinary trends. It helps assess player behavior and its potential impact on team performance.
+                    </p>
+                </div>
+        
+                <div class="visualization-item">
+                    <h4>Density Plot - Expected Goals (xG) vs Non-Penalty xG (npxG)</h4>
+                    <img src="images/visualiztion/8.png" alt="Density plot comparing xG and npxG">
+                    <p>
+                        This density plot compares expected goals (xG) to non-penalty expected goals (npxG) for players, excluding penalty contributions. It evaluates the quality and frequency of goal-scoring opportunities during open play.
+                    </p>
+                </div>
+        
+                <div class="visualization-item">
+                    <h4>Top 10 Players by Contribution to Team Goals (%)</h4>
+                    <img src="images/visualiztion/9.png" alt="Players with the highest percentage contribution to team goals">
+                    <p>
+                        This bar chart displays the percentage contribution of individual players to their team’s total goals. It emphasizes the reliance of certain teams on star players.
+                    </p>
+                </div>
+        
+                <div class="visualization-item">
+                    <h4>Performance of [Player Name]</h4>
+                    <img src="images/visualiztion/10.png" alt="Performance metrics for a specific player">
+                    <p>
+                        This detailed visualization focuses on an individual player, breaking down their performance across metrics like goals, assists, and defensive actions.
+                    </p>
+                </div>
+        
+                <div class="visualization-item">
+                    <h4>Total Matches Played per Team by Season</h4>
+                    <img src="images/visualiztion/11.png" alt="Matches played per team each season">
+                    <p>
+                        This bar chart summarizes the total matches played by each team in a season, highlighting team participation levels and consistency.
+                    </p>
+                </div>
+        
+                <div class="visualization-item">
+                    <h4>Goals and Assists per 90 Minutes by Season</h4>
+                    <img src="images/visualiztion/5.png" alt="Goals and assists per 90 minutes by season">
+                    <p>
+                        This plot evaluates offensive contributions by measuring goals and assists per 90 minutes played across different seasons.
+                    </p>
+                </div>
+        
+
+            </div>
+        </section>
+        <section class="data-section lineup-section">
+            <h3 class="section-title">Football Pitch Lineup Visualization</h3>
+            <p>
+                This model generates unique football lineups for the 4-3-3 formation, visualized on a football pitch for each season. Players are assigned positions based on their performance metrics, primarily "Goals + Assists," ensuring the strongest lineup for each season.
+            </p>
+        
+            <div class="lineup-grid">
+                <!-- 2020-2021 Lineup -->
+                <div class="lineup-card">
+                    <h5>2020-2021 Lineup</h5>
+                    <img src="images/visualiztion/lineup-2020-2021..png" alt="Football Pitch Lineup for 2020-2021">
+                    <p>
+                        <strong>Forward Line:</strong> Iago Aspas (Right Wing), Antoine Griezmann (Striker), Yannick Carrasco (Left Wing).<br>
+                        <strong>Midfield:</strong> Gerard Moreno, Lionel Messi, Marcos Llorente.<br>
+                        <strong>Defense:</strong> José Luis Gayà (Left Back), Jordi Alba (Center Back), Fidel (Center Back), Marko Dmitrović (Right Back).<br>
+                        <strong>Goalkeeper:</strong> Marko Dmitrović.
+                    </p>
+                </div>
+        
+                <!-- 2021-2022 Lineup -->
+                <div class="lineup-card">
+                    <h5>2021-2022 Lineup</h5>
+                    <img src="images/visualiztion/lineup-2021-2022..png" alt="Football Pitch Lineup for 2021-2022">
+                    <p>
+                        <strong>Forward Line:</strong> Iago Aspas (Right Wing), Karim Benzema (Striker), Vinícius Júnior (Left Wing).<br>
+                        <strong>Midfield:</strong> Ángel Correa, José Luis Morales, Gonçalo Guedes.<br>
+                        <strong>Defense:</strong> Johan Mojica (Left Back), Jordi Alba (Center Back), Alfonso Pedraza (Center Back), Álex Moreno (Right Back).<br>
+                        <strong>Goalkeeper:</strong> Yassine Bounou.
+                    </p>
+                </div>
+        
+                <!-- 2022-2023 Lineup -->
+                <div class="lineup-card">
+                    <h5>2022-2023 Lineup</h5>
+                    <img src="images/visualiztion/lineup-2022-2023..png" alt="Football Pitch Lineup for 2022-2023">
+                    <p>
+                        <strong>Forward Line:</strong> Vinícius Júnior (Right Wing), Karim Benzema (Striker), Yannick Carrasco (Left Wing).<br>
+                        <strong>Midfield:</strong> Gabriel Veiga, Antoine Griezmann, Rodrygo.<br>
+                        <strong>Defense:</strong> Alejandro Balde (Left Back), Arnau Martinez (Center Back), Brian Oliván (Center Back), Álvaro Aceve (Right Back).<br>
+                        <strong>Goalkeeper:</strong> Álvaro Aceve.
+                    </p>
+                </div>
+        
+                <!-- 2023-2024 Lineup -->
+                <div class="lineup-card">
+                    <h5>2023-2024 Lineup</h5>
+                    <img src="images/visualiztion/lineup-2023-2024..png" alt="Football Pitch Lineup for 2023-2024">
+                    <p>
+                        <strong>Forward Line:</strong> Robert Lewandowski (Right Wing), Alexander Sørloth (Striker), Sávio (Left Wing).<br>
+                        <strong>Midfield:</strong> Jude Bellingham, Antoine Griezmann, Marcos Llorente.<br>
+                        <strong>Defense:</strong> Miguel Gutiérrez (Left Back), Lucas Vázquez (Center Back), Yan Couto (Center Back), Artem Dovbyk (Right Back).<br>
+                        <strong>Goalkeeper:</strong> Juleh Agirrezabala.
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        
+    </main>
+
+    <footer>
+        <div class="social-icons">
+            <!-- Add your social media links here -->
+            <a href="https://facebook.com" target="_blank" title="Facebook">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M22.675 0h-21.35C.597 0 0 .597 0 1.337v21.325c0 .739.597 1.337 1.325 1.337H12v-9.325H9.325V10.67H12V8.325c0-2.617 1.593-4.049 3.915-4.049.805 0 1.52.06 1.737.087v2.015l-1.192.001c-1.044 0-1.248.496-1.248 1.224v1.604h2.497l-.328 2.67h-2.169V24h4.243c.739 0 1.325-.597 1.325-1.325V1.337C24 .597 23.413 0 22.675 0z"/>
+                </svg>
+            </a>
+            <a href="https://twitter.com" target="_blank" title="Twitter">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M24 4.557a9.818 9.818 0 01-2.828.775 4.932 4.932 0 002.165-2.724 9.864 9.864 0 01-3.127 1.197A4.92 4.92 0 0016.616 3c-2.727 0-4.932 2.209-4.932 4.932 0 .388.043.765.127 1.125-4.1-.205-7.733-2.171-10.169-5.155-.427.734-.671 1.584-.671 2.476 0 1.709.869 3.216 2.189 4.102a4.932 4.932 0 01-2.233-.619v.062c0 2.385 1.693 4.374 3.946 4.828-.411.11-.843.17-1.288.17-.314 0-.615-.03-.916-.086a4.93 4.93 0 004.604 3.417A9.869 9.869 0 010 19.54a13.908 13.908 0 007.548 2.211c9.142 0 14.144-7.582 14.144-14.144 0-.214-.005-.428-.014-.64A10.163 10.163 0 0024 4.557z"/>
+                </svg>
+            </a>
+            <a href="https://instagram.com" target="_blank" title="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.347 3.608 1.322.975.975 1.26 2.242 1.322 3.608.058 1.266.07 1.646.07 4.84s-.012 3.574-.07 4.84c-.062 1.366-.347 2.633-1.322 3.608-.975.975-2.242 1.26-3.608 1.322-1.266.058-1.646.07-4.84.07s-3.574-.012-4.84-.07c-1.366-.062-2.633-.347-3.608-1.322-.975-.975-1.26-2.242-1.322-3.608-.058-1.266-.07-1.646-.07-4.84s.012-3.574.07-4.84c.062-1.366.347-2.633 1.322-3.608.975-.975 2.242-1.26 3.608-1.322 1.266-.058 1.646-.07 4.84-.07m0-2.163C8.691 0 8.26.013 7.193.073 6.123.132 5.115.346 4.302.96c-.813.614-1.486 1.287-2.1 2.1-.614.813-.828 1.821-.887 2.891-.06 1.067-.073 1.498-.073 5.046s.013 3.978.073 5.046c.059 1.067.273 2.075.887 2.891.614.813 1.287 1.486 2.1 2.1.813.614 1.821.828 2.891.887 1.067.06 1.498.073 5.046.073s3.978-.013 5.046-.073c1.067-.059 2.075-.273 2.891-.887.813-.614 1.486-1.287 2.1-2.1.614-.813.828-1.821.887-2.891.06-1.067.073-1.498.073-5.046s-.013-3.978-.073-5.046c-.059-1.067-.273-2.075-.887-2.891-.614-.813-1.287-1.486-2.1-2.1-.813-.614-1.821-.828-2.891-.887-1.067-.06-1.498-.073-5.046-.073z"/>
+                    <circle cx="12" cy="12" r="3.5"/>
+                </svg>
+            </a>
+        </div>
+    
+        <p>© 2024 Football Insights. All rights reserved.</p>
+    </footer>
+    
+</body>
+</html>
