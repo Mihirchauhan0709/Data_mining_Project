@@ -56,8 +56,14 @@
                     <p>
                         The model's accuracy and depth provide clubs with a strategic advantage, helping to optimize player selection, match preparations, and long-term planning. By combining traditional statistics with modern analytics, this tool delivers a comprehensive outlook on player performance.
                     </p>
+                    <div style="text-align: center; margin-top: 20px;">
+                        <strong style="color: #FF4500; font-size: 1.2rem;">
+                            MSE: 0.27522619542619536<br>R² Score: 0.9714575243103586
+                        </strong>
+                    </div>
                     <div class="models-image-container">
                         <img src="Images/top-scorers.png" alt="Top 20 Predicted Goal Scorers">
+
                     </div>
                 </li>
                 
@@ -92,6 +98,11 @@
                     <p>
                         The model output is visualized through a bar chart, ranking players based on their predicted assists. This visualization aids analysts and teams in identifying top-performing creators and planning tactics around these players.
                     </p>
+                    <div style="text-align: center; margin-top: 20px;">
+                        <strong style="color: #FF4500; font-size: 1.2rem;">
+                            MSE: 0.03692993762993763<br>R² Score: 0.9894141621547954
+                        </strong>
+                    </div>
                     <div class="models-image-container">
                         <img src="Images/top-20-predicted-assists.png" alt="Top 20 Predicted Assist Leaders" class="models-image">
                     </div>
@@ -110,6 +121,13 @@
                             <h5>Discipline-Based Clustering</h5>
                             <p>Groups players by their yellow and red card tendencies to identify discipline profiles.</p>
                             <img src="Images/clustering-discipline.png" alt="Discipline-Based Clustering">
+                            <strong style="color: #FF4500; font-size: 1.2rem;">
+                                Model: KMeans<br>
+                                Number of Clusters: 3<br>
+                                Silhouette Score: 0.62<br>
+                                Inertia (Sum of Squared Distances): 1222.43<br>
+                                R²-like Metric: -1221.43
+                            </strong>
                         </div>
                 
                         <!-- Workload-Based Clustering -->
@@ -117,6 +135,13 @@
                             <h5>Workload-Based Clustering</h5>
                             <p>Clusters players based on minutes played and matches played to highlight player workload.</p>
                             <img src="Images/clustering-workload.png" alt="Workload-Based Clustering">
+                            <strong style="color: #FF4500; font-size: 1.2rem;">
+                                Model: KMeans<br>
+                                Number of Clusters: 4<br>
+                                Silhouette Score: 0.54<br>
+                                Inertia (Sum of Squared Distances): 96.78<br>
+                                R²-like Metric: -95.78
+                            </strong>
                         </div>
                 
                         <!-- Playmaking and Creativity Clustering -->
@@ -124,6 +149,13 @@
                             <h5>Playmaking and Creativity Clustering</h5>
                             <p>Groups players by their progressive passes and assists to measure creativity.</p>
                             <img src="Images/clustering-creativity.png" alt="Playmaking and Creativity Clustering">
+                            <strong style="color: #FF4500; font-size: 1.2rem;">
+                                Model: KMeans<br>
+                                Number of Clusters: 3<br>
+                                Silhouette Score: 0.51<br>
+                                Inertia (Sum of Squared Distances): 1569.35<br>
+                                R²-like Metric: -1568.35
+                            </strong>
                         </div>
                 
                         <!-- Goals vs Assists Clustering -->
@@ -131,67 +163,77 @@
                             <h5>Goals vs Assists Clustering</h5>
                             <p>Identifies clusters of players based on their goal and assist contributions.</p>
                             <img src="Images/clustering-goals-assists.png" alt="Goals vs Assists Clustering">
+                            <strong style="color: #FF4500; font-size: 1.2rem;">
+                                Model: KMeans<br>
+                                Number of Clusters: 3<br>
+                                Silhouette Score: 0.64<br>
+                                Inertia (Sum of Squared Distances): 1643.27<br>
+                                R²-like Metric: -1642.27
+                            </strong>
                         </div>
                     </div>
                 </li>
                 
 
-
                 <li>
-                        <h3>Best 11 Players Model</h3>
-                        <p>
-                            This model identifies the top 11 players for each football season using a 4-3-3 formation. By analyzing individual performance metrics such as <strong>Goals</strong>, <strong>Assists</strong>, and <strong>Minutes Played</strong>, the model selects the best-performing players in their respective positions. The lineup is optimized to include:
-                        </p>
-                        
-                        <div class="best-11-grid">
-                            <div class="position-card">
-                                <h4>1 Goalkeeper (GK)</h4>
-                                <p>The last line of defense, tasked with stopping the opponent's shots and organizing the backline.</p>
-                            </div>
-                            <div class="position-card">
-                                <h4>4 Defenders (DF)</h4>
-                                <p>Responsible for preventing goals and supporting the team in building play from the back.</p>
-                            </div>
-                            <div class="position-card">
-                                <h4>3 Midfielders (MF)</h4>
-                                <p>The engine of the team, linking defense and attack while controlling the tempo of the game.</p>
-                            </div>
-                            <div class="position-card">
-                                <h4>3 Forwards (FW)</h4>
-                                <p>The primary goal-scorers, leading the attack and creating opportunities to score.</p>
-                            </div>
+                    <h3>Best 11 Players Model</h3>
+                    <p>
+                        This model identifies the top 11 players for each football season using a 4-3-3 formation. By analyzing individual performance metrics such as <strong>Goals</strong>, <strong>Assists</strong>, and <strong>Minutes Played</strong>, the model selects the best-performing players in their respective positions. The lineup is optimized to include:
+                    </p>
+                    
+                    <div class="best-11-grid">
+                        <div class="position-card">
+                            <h4>1 Goalkeeper (GK)</h4>
+                            <p>The last line of defense, tasked with stopping the opponent's shots and organizing the backline.</p>
                         </div>
-                        
-                        <p>The team is determined for each season based on a comprehensive evaluation of player contributions to their teams.</p>
-            
-                        <!-- Visualization Section -->
-<div class="best-11-grid">
-    <div class="models11-image-container">
-        <h4>2020-2021 Season</h4>
-        <p>The best 11 players for the 2020-2021 season, ranked by Goals + Assists:</p>
-        <img src="Images/best_11_2020-2021_goals_assists.jpg" alt="Best 11 Players for 2020-2021 Season">
-    </div>
-
-    <div class="models11-image-container">
-        <h4>2021-2022 Season</h4>
-        <p>The best 11 players for the 2021-2022 season, ranked by Goals + Assists:</p>
-        <img src="Images/best_11_2021-2022_goals_assists.png" alt="Best 11 Players for 2021-2022 Season">
-    </div>
-
-    <div class="models11-image-container">
-        <h4>2022-2023 Season</h4>
-        <p>The best 11 players for the 2022-2023 season, ranked by Goals + Assists:</p>
-        <img src="Images/best_11_2022-2023_goals_assists.png" alt="Best 11 Players for 2022-2023 Season">
-    </div>
-
-    <div class="models11-image-container">
-        <h4>2023-2024 Season</h4>
-        <p>The best 11 players for the 2023-2024 season, ranked by Goals + Assists:</p>
-        <img src="Images/best_11_2023-2024_goals_assists.png" alt="Best 11 Players for 2023-2024 Season">
-    </div>
-</div>
-
+                        <div class="position-card">
+                            <h4>4 Defenders (DF)</h4>
+                            <p>Responsible for preventing goals and supporting the team in building play from the back.</p>
+                        </div>
+                        <div class="position-card">
+                            <h4>3 Midfielders (MF)</h4>
+                            <p>The engine of the team, linking defense and attack while controlling the tempo of the game.</p>
+                        </div>
+                        <div class="position-card">
+                            <h4>3 Forwards (FW)</h4>
+                            <p>The primary goal-scorers, leading the attack and creating opportunities to score.</p>
+                        </div>
+                    </div>
+                    
+                    <p>The team is determined for each season based on a comprehensive evaluation of player contributions to their teams.</p>
+                
+                    <!-- Visualization Section -->
+                    <div class="best-11-grid">
+                        <div class="models11-image-container">
+                            <h4>2020-2021 Season</h4>
+                            <p>The best 11 players for the 2020-2021 season, ranked by Goals + Assists:</p>
+                            <img src="Images/best_11_2020-2021_goals_assists.jpg" alt="Best 11 Players for 2020-2021 Season">
+                            <p><strong style="color: #FF4500; font-size: 1.2rem;">R-squared: 0.5394 &nbsp;</strong>  | &nbsp; <strong style="color: #FF4500; font-size: 1.2rem;">MSE: 4.7182</strong> </p>
+                        </div>
+                
+                        <div class="models11-image-container">
+                            <h4>2021-2022 Season</h4>
+                            <p>The best 11 players for the 2021-2022 season, ranked by Goals + Assists:</p>
+                            <img src="Images/best_11_2021-2022_goals_assists.png" alt="Best 11 Players for 2021-2022 Season">
+                            <p><strong style="color: #FF4500; font-size: 1.2rem;">R-squared: 0.4581 &nbsp;</strong>  | &nbsp; <strong style="color: #FF4500; font-size: 1.2rem;">MSE: 4.5130</strong> </p>
+                        </div>
+                
+                        <div class="models11-image-container">
+                            <h4>2022-2023 Season</h4>
+                            <p>The best 11 players for the 2022-2023 season, ranked by Goals + Assists:</p>
+                            <img src="Images/best_11_2022-2023_goals_assists.png" alt="Best 11 Players for 2022-2023 Season">
+                            <p><strong style="color: #FF4500; font-size: 1.2rem;">R-squared: 0.4881 &nbsp; </strong> | &nbsp; <strong style="color: #FF4500; font-size: 1.2rem;">MSE: 4.1930</strong></p>
+                        </div>
+                
+                        <div class="models11-image-container">
+                            <h4>2023-2024 Season</h4>
+                            <p>The best 11 players for the 2023-2024 season, ranked by Goals + Assists:</p>
+                            <img src="Images/best_11_2023-2024_goals_assists.png" alt="Best 11 Players for 2023-2024 Season">
+                            <p><strong style="color: #FF4500; font-size: 1.2rem;">R-squared: 0.5063 &nbsp; </strong> | &nbsp; <strong style="color: #FF4500; font-size: 1.2rem;"></strong>MSE: 4.8358</strong> </p>
+                        </div>
+                    </div>
                 </li>
+                
             </ul>
 
             <h3>Team Dataset Models</h3>
@@ -225,11 +267,13 @@
                     <p>
                         The bar chart below visualizes the top 10 most recommended players across all teams. These recommendations provide valuable insights for team managers and analysts to enhance their squad's capabilities.
                     </p>
+
                     <div class="models-image-container">
                         <img src="Images/team-player-recommendations.png" alt="Team Data Analysis and Player Recommendations">
                     </div>
+
                 </li>
-                
+
 
                 <li>
                     <h4>Top 10 Predicted Goal Scorers</h4>
@@ -259,6 +303,11 @@
                     <p>
                         This visualization offers a clear representation of the predicted goals for each player, providing valuable insights for coaches, analysts, and fantasy football enthusiasts.
                     </p>
+                    <div style="text-align: center; margin-top: 20px;">
+                        <strong style="color: #FF4500; font-size: 1.2rem;">
+                            MSE: 1.1809                            <br>R² Score: 0.8707
+                        </strong>
+                    </div>
                     <div class="models-image-container">
                         <img src="Images/top-goal-scorers-prediction.png" alt="Top 10 Predicted Goal Scorers">
                     </div>
@@ -300,6 +349,11 @@
                     <p>
                         This classification helps coaches and analysts evaluate team dynamics, identify key player roles, and plan strategies around player strengths.
                     </p>
+                    <div style="text-align: center; margin-top: 20px;">
+                        <strong style="color: #FF4500; font-size: 1.2rem;">
+                            MSE: 0.0015<br>R² Score: 0.9694
+                        </strong>
+                    </div>
                     <div class="models-image-container">
                         <img src="Images/confusion-matrix-classification.png" alt="Confusion Matrix for Player Classification">
                     </div>
@@ -327,6 +381,11 @@
                             <li><strong>Barcelona:</strong> 67.55%</li>
                         </ul>
                     </p>
+                    <div style="text-align: center; margin-top: 20px;">
+                        <strong style="color: #FF4500; font-size: 1.2rem;">
+                            MSE: 0<br>R² Score: 1
+                        </strong>
+                    </div>
                     <div class="models-image-container">
                         <img src="Images/team-win-probability.png" alt="Team Win Probability Visualization">
                     </div>
