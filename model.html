@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Football Models</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="models.js" defer></script>
+    
+    <link rel="icon" type="image/png" href="Images/favicon.ico">
+
 </head>
 <body>
     <header>
@@ -62,11 +67,17 @@
                         </strong>
                     </div>
                     <div class="models-image-container">
-                        <img src="Images/top-scorers.png" alt="Top 20 Predicted Goal Scorers">
-
+                        <!-- <img src="Images/top-scorers.png" alt="Top 20 Predicted Goal Scorers"> -->
+                        <div id="goal-scorers-chart" class="interactive-chart"></div>
                     </div>
                 </li>
-                
+                <!-- <section class="interactive-visualization" id="model1">
+                    <p>
+                        This interactive bar chart displays the predicted top 20 goal scorers for the upcoming football season. 
+                        Hover over the bars to see detailed statistics for each player.
+                    </p>
+                    
+                </section> -->
 
                 <li>
                     <h4>Top 20 Predicted Assist Leaders for the Coming Season</h4>
@@ -104,9 +115,16 @@
                         </strong>
                     </div>
                     <div class="models-image-container">
-                        <img src="Images/top-20-predicted-assists.png" alt="Top 20 Predicted Assist Leaders" class="models-image">
+                        <!-- <img src="Images/top-20-predicted-assists.png" alt="Top 20 Predicted Assist Leaders" class="models-image"> -->
                     </div>
                 </li>
+                <section class="interactive-visualization" id="model1">
+                    <p>
+        This model identifies the top 20 players likely to excel in providing assists during the upcoming football season. Leveraging advanced machine learning techniques, such as a Random Forest Regressor, the model evaluates player features that contribute to their playmaking abilities.
+    </p>
+    <div id="assist-chart" style="width: 100%; height: 600px;"></div>
+                </section>
+                
                 
                 <li>
                     <h4>Clustering Analysis for Player Insights</h4>
@@ -173,6 +191,34 @@
                         </div>
                     </div>
                 </li>
+
+
+<!-- 
+                <div class="clustering-gallery">
+                    <div class="clustering-item">
+                        <h4>Discipline-Based Clustering</h4>
+                        <div id="discipline-chart" style="height: 400px;"></div>
+                    </div>
+                
+                    <div class="clustering-item">
+                        <h4>Workload-Based Clustering</h4>
+                        <div id="workload-chart" style="height: 400px;"></div>
+                    </div>
+                
+                    <div class="clustering-item">
+                        <h4>Playmaking and Creativity Clustering</h4>
+                        <div id="creativity-chart" style="height: 400px;"></div>
+                    </div>
+                
+                    <div class="clustering-item">
+                        <h4>Goals vs Assists Clustering</h4>
+                        <div id="goals-assists-chart" style="height: 400px;"></div>
+                    </div>
+                </div> -->
+                
+
+
+
                 
 
                 <li>
@@ -207,28 +253,32 @@
                         <div class="models11-image-container">
                             <h4>2020-2021 Season</h4>
                             <p>The best 11 players for the 2020-2021 season, ranked by Goals + Assists:</p>
-                            <img src="Images/best_11_2020-2021_goals_assists.jpg" alt="Best 11 Players for 2020-2021 Season">
+                            <div id="best-11-2020-2021" style="height: 400px;"></div>
+                            <!-- <img src="Images/best_11_2020-2021_goals_assists.jpg" alt="Best 11 Players for 2020-2021 Season"> -->
                             <p><strong style="color: #FF4500; font-size: 1.2rem;">R-squared: 0.5394 &nbsp;</strong>  | &nbsp; <strong style="color: #FF4500; font-size: 1.2rem;">MSE: 4.7182</strong> </p>
                         </div>
                 
                         <div class="models11-image-container">
                             <h4>2021-2022 Season</h4>
                             <p>The best 11 players for the 2021-2022 season, ranked by Goals + Assists:</p>
-                            <img src="Images/best_11_2021-2022_goals_assists.png" alt="Best 11 Players for 2021-2022 Season">
+                            <div id="best-11-2021-2022" style="height: 400px;"></div>
+                            <!-- <img src="Images/best_11_2021-2022_goals_assists.png" alt="Best 11 Players for 2021-2022 Season"> -->
                             <p><strong style="color: #FF4500; font-size: 1.2rem;">R-squared: 0.4581 &nbsp;</strong>  | &nbsp; <strong style="color: #FF4500; font-size: 1.2rem;">MSE: 4.5130</strong> </p>
                         </div>
                 
                         <div class="models11-image-container">
                             <h4>2022-2023 Season</h4>
                             <p>The best 11 players for the 2022-2023 season, ranked by Goals + Assists:</p>
-                            <img src="Images/best_11_2022-2023_goals_assists.png" alt="Best 11 Players for 2022-2023 Season">
+                            <div id="best-11-2022-2023" style="height: 400px;"></div>
+                            <!-- <img src="Images/best_11_2022-2023_goals_assists.png" alt="Best 11 Players for 2022-2023 Season"> -->
                             <p><strong style="color: #FF4500; font-size: 1.2rem;">R-squared: 0.4881 &nbsp; </strong> | &nbsp; <strong style="color: #FF4500; font-size: 1.2rem;">MSE: 4.1930</strong></p>
                         </div>
                 
                         <div class="models11-image-container">
                             <h4>2023-2024 Season</h4>
                             <p>The best 11 players for the 2023-2024 season, ranked by Goals + Assists:</p>
-                            <img src="Images/best_11_2023-2024_goals_assists.png" alt="Best 11 Players for 2023-2024 Season">
+                            <div id="best-11-2023-2024" style="height: 400px;"></div>
+                            <!-- <img src="Images/best_11_2023-2024_goals_assists.png" alt="Best 11 Players for 2023-2024 Season"> -->
                             <p><strong style="color: #FF4500; font-size: 1.2rem;">R-squared: 0.5063 &nbsp; </strong> | &nbsp; <strong style="color: #FF4500; font-size: 1.2rem;"></strong>MSE: 4.8358</strong> </p>
                         </div>
                     </div>
@@ -269,8 +319,13 @@
                     </p>
 
                     <div class="models-image-container">
-                        <img src="Images/team-player-recommendations.png" alt="Team Data Analysis and Player Recommendations">
-                    </div>
+                        <!-- <img src="Images/team-player-recommendations.png" alt="Team Data Analysis and Player Recommendations"> -->
+                        
+                    <section class="interactive-visualization" id="model1">
+                        <div id="recommendation-chart" style="width: 100%; height: 500px;"></div>
+                    
+                    </section>
+                    
 
                 </li>
 
@@ -309,8 +364,11 @@
                         </strong>
                     </div>
                     <div class="models-image-container">
-                        <img src="Images/top-goal-scorers-prediction.png" alt="Top 10 Predicted Goal Scorers">
+                        <!-- <img src="Images/top-goal-scorers-prediction.png" alt="Top 10 Predicted Goal Scorers"> -->
                     </div>
+                    <section class="interactive-visualization" id="model1">
+                    <div id="top-scorers-chart"></div>
+                </section>
                 </li>
                 
 
@@ -355,8 +413,12 @@
                         </strong>
                     </div>
                     <div class="models-image-container">
-                        <img src="Images/confusion-matrix-classification.png" alt="Confusion Matrix for Player Classification">
+                        <!-- <img src="Images/confusion-matrix-classification.png" alt="Confusion Matrix for Player Classification"> -->
                     </div>
+
+                    <section class="interactive-visualization" id="model1">
+                        <div id="confusion-matrix-chart"></div>
+                    </section>
                 </li>
                 
                 <li>
@@ -387,8 +449,11 @@
                         </strong>
                     </div>
                     <div class="models-image-container">
-                        <img src="Images/team-win-probability.png" alt="Team Win Probability Visualization">
+                        <!-- <img src="Images/team-win-probability.png" alt="Team Win Probability Visualization"> -->
                     </div>
+                    <section class="interactive-visualization" id="model1">
+                    <div id="win-probability-chart" style="width: 80%; margin: 0 auto;"></div>
+                </section>
                     <p>
                         This model helps coaches and analysts evaluate match outcomes based on team composition, player performance, and opponent stats. It’s ideal for strategizing team lineups and analyzing potential match outcomes.
                     </p>
@@ -401,4 +466,8 @@
         <p>© 2024 Football Insights. All rights reserved.</p>
     </footer>
 </body>
+
+
+
+
 </html>
