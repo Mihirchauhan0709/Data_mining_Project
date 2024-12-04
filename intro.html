@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Results & Conclusion</title>
-        <link rel="stylesheet" href="style.css">        
-        <link rel="icon" type="image/png" href="Images/favicon.ico">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Models</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="models.js" defer></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
-        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    </head>
+    <link rel="icon" type="image/png" href="Images/favicon.ico">
+
+</head>
 <body>
     <header>
-        <nav class="navbar">
-            <div class="container">
-                <h1 class="navbar-brand">Football Insights</h1>
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="intro.html" class="active">Introduction</a></li>
-                    <li><a href="data.html">Data Visualization</a></li>
-                    <li><a href="model.html">Model</a></li>
-                    <li><a href="result.html">Result & Conclusion</a></li>
-                </ul>
-            </div>
+        <nav class="navbar" id="sidebar">
+            <h1 class="navbar-brand">Football Insights</h1>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="intro.html" class="active">Introduction</a></li>
+                <li><a href="data.html" >Data Collection</a></li>
+                <li><a href="model.html" >Model</a></li>
+                <li><a href="result.html">Result & Conclusion</a></li>
+            </ul>
         </nav>
+        <button id="toggle-button">
+            <i class="fas fa-futbol"></i> <!-- Football icon -->
+        </button>
     </header>
 
     <main>
@@ -137,4 +141,18 @@
         <p>© 2024 Football Insights. All rights reserved.</p>
     </footer>
 </body>
+<script>
+    
+    document.getElementById('toggle-button').addEventListener('click', function () {
+        const navbar = document.getElementById('sidebar');
+        const body = document.body;
+
+        // Toggle the 'hidden' class on the navbar
+        navbar.classList.toggle('hidden');
+
+        // Adjust the body's class for margin
+        body.classList.toggle('navbar-hidden');
+    });
+
+</script>
 </html>
